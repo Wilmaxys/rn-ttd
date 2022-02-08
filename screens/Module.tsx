@@ -6,14 +6,15 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
   ScrollView,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import Header from "../components/Header";
-import Card from "../components/module/Card";
-import { useColors } from "../hooks";
+} from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import Header from '../components/Header';
+import Card from '../components/module/Card';
+import { useSelector } from 'react-redux';
+import { selectColors } from '../store/slices/user-slice';
 
 const ModuleScreen = ({}) => {
-  const colors = useColors();
+  const colors = useSelector(selectColors);
 
   const styles = StyleSheet.create({
     screen: {
@@ -29,8 +30,8 @@ const ModuleScreen = ({}) => {
       borderWidth: 1,
       borderRadius: 5,
       borderColor: colors.primaryLight,
-      flexDirection: "row",
-      alignItems: "center",
+      flexDirection: 'row',
+      alignItems: 'center',
       paddingHorizontal: 10,
       marginBottom: 10,
     },
@@ -48,21 +49,21 @@ const ModuleScreen = ({}) => {
       marginVertical: 10,
     },
     cardContainer: {
-      flexDirection: "row",
-      flexWrap: "wrap",
+      flexDirection: 'row',
+      flexWrap: 'wrap',
     },
   });
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.screen}>
-        <Header title="Modules" />
+        <Header title='Modules' />
         <View style={styles.container}>
           <View style={styles.inputContainer}>
-            <Ionicons style={styles.inputVector} size={24} name="search" />
+            <Ionicons style={styles.inputVector} size={24} name='search' />
             <TextInput
               blurOnSubmit
-              placeholder="test"
+              placeholder='test'
               autoCorrect={false}
               style={styles.input}
             />

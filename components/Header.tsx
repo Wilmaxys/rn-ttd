@@ -1,18 +1,19 @@
-import { View, StyleSheet, Text } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useColors } from "../hooks";
+import { View, StyleSheet, Text } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useSelector } from 'react-redux';
+import { selectColors } from '../store/slices/user-slice';
 
 type props = {
   title: string;
 };
 
-const Header = ({ title = "" }) => {
-  const colors = useColors();
+const Header = ({ title = '' }) => {
+  const colors = useSelector(selectColors);
 
   const styles = StyleSheet.create({
     header: {
       paddingHorizontal: 20,
-      width: "100%",
+      width: '100%',
       height: 80,
       // shadowColor: "black",
       // shadowOffset: {
@@ -22,22 +23,22 @@ const Header = ({ title = "" }) => {
       // shadowRadius: 6,
       // shadowOpacity: 0.26,
       // elevation: 5,
-      justifyContent: "flex-end",
+      justifyContent: 'flex-end',
     },
     headerContent: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     headerTitle: {
-      fontFamily: "open-sans",
+      fontFamily: 'open-sans',
       fontSize: 24,
       color: colors.text,
-      fontWeight: "700",
+      fontWeight: '700',
     },
     headerVectorContainer: {
-      flexDirection: "row",
-      alignItems: "center",
+      flexDirection: 'row',
+      alignItems: 'center',
     },
     headerVectorIcon: {
       marginLeft: 5,
@@ -51,13 +52,13 @@ const Header = ({ title = "" }) => {
         <View style={styles.headerVectorContainer}>
           <Ionicons
             style={styles.headerVectorIcon}
-            name="menu"
+            name='menu'
             color={colors.text}
             size={30}
           />
           <Ionicons
             style={styles.headerVectorIcon}
-            name="apps"
+            name='apps'
             color={colors.text}
             size={22}
           />

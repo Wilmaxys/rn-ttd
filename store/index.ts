@@ -1,4 +1,4 @@
-import ExpoFileSystemStorage from "redux-persist-expo-filesystem";
+import ExpoFileSystemStorage from 'redux-persist-expo-filesystem';
 import {
   persistStore,
   persistReducer,
@@ -8,13 +8,13 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import rootSlice from "./slices";
+} from 'redux-persist';
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import rootSlice from './slices';
 
 const persistConfig = {
-  key: "root",
-  whitelist: ["user"],
+  key: 'root',
+  whitelist: ['user'],
   storage: ExpoFileSystemStorage,
 };
 

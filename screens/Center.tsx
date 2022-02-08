@@ -1,11 +1,12 @@
-import { StyleSheet, Text, ScrollView, ImageBackground } from "react-native";
-import Notification from "../components/center/Notification";
-import Header from "../components/Header";
-import { LinearGradient } from "expo-linear-gradient";
-import { useColors } from "../hooks";
+import { StyleSheet, Text, ScrollView, ImageBackground } from 'react-native';
+import Notification from '../components/center/Notification';
+import Header from '../components/Header';
+import { LinearGradient } from 'expo-linear-gradient';
+import { selectColors } from '../store/slices/user-slice';
+import { useSelector } from 'react-redux';
 
 const CenterScreen = ({}) => {
-  const colors = useColors();
+  const colors = useSelector(selectColors);
 
   const styles = StyleSheet.create({
     container: {
@@ -21,31 +22,31 @@ const CenterScreen = ({}) => {
       color: colors.text,
     },
     footer: {
-      position: "absolute",
+      position: 'absolute',
       bottom: 0,
       height: 150,
-      width: "100%",
+      width: '100%',
     },
     image: {
       flex: 1,
-      width: "100%",
+      width: '100%',
       backgroundColor: colors.secondaryLight,
     },
   });
 
   return (
     <ImageBackground
-      source={require("../assets/images/frame.png")}
+      source={require('../assets/images/frame.png')}
       imageStyle={{
-        resizeMode: "repeat",
-        overflow: "visible",
-        backfaceVisibility: "visible",
+        resizeMode: 'repeat',
+        overflow: 'visible',
+        backfaceVisibility: 'visible',
         flex: 1,
         opacity: 0.3,
       }}
       style={styles.container}
     >
-      <Header title="Activités" />
+      <Header title='Activités' />
       <ScrollView contentContainerStyle={styles.screen}>
         <Text style={styles.title}>Today</Text>
         <Notification />
@@ -60,7 +61,7 @@ const CenterScreen = ({}) => {
         <Notification brown={true} />
       </ScrollView>
       <LinearGradient
-        colors={["transparent", colors.secondaryLight]}
+        colors={['transparent', colors.secondaryLight]}
         start={[0.5, 0.15]}
         end={[0.5, 0.4]}
         style={styles.footer}

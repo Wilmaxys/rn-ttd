@@ -1,9 +1,10 @@
 import { View, StyleSheet, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useColors } from '../../hooks';
+import { useSelector } from 'react-redux';
+import { selectColors } from '../../store/slices/user-slice';
 
 const Notification = ({}) => {
-  const colors = useColors();
+  const colors = useSelector(selectColors);
 
   const styles = StyleSheet.create({
     cardNotif: {

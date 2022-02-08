@@ -1,18 +1,18 @@
-import { SafeAreaView } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import * as Font from "expo-font";
-import AppLoading from "expo-app-loading";
-import { persistor, store } from "./store";
-import { Provider } from "react-redux";
-import { PersistGate } from "redux-persist/integration/react";
-import { AppNavigator } from "./navigation";
-import { Loader } from "./components";
+import { SafeAreaView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
+import * as Font from 'expo-font';
+import AppLoading from 'expo-app-loading';
+import { persistor, store } from './store';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { AppNavigator } from './navigation';
+import { Loader } from './components';
 
 const loadResourcesAsync = async (): Promise<void> => {
   return await Font.loadAsync({
-    "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
-    "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
   });
 };
 
@@ -33,7 +33,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={<Loader />} persistor={persistor}>
         <SafeAreaView style={{ flex: 1 }}>
-          <StatusBar style="auto" />
+          <StatusBar style='auto' />
           <AppNavigator />
         </SafeAreaView>
       </PersistGate>

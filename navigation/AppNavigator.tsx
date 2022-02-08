@@ -1,16 +1,17 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import { Ionicons } from "@expo/vector-icons";
-import React from "react";
-import { CenterScreen, ModuleScreen, ProfilScreen } from "../screens";
-import { StyleSheet, View } from "react-native";
-import { useColors, useTheme } from "../hooks";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { CenterScreen, ModuleScreen, ProfilScreen } from '../screens';
+import { StyleSheet, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { selectColors, selectTheme } from '../store/slices/user-slice';
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = ({}) => {
-  const theme = useTheme();
-  const colors = useColors();
+  const theme = useSelector(selectTheme);
+  const colors = useSelector(selectColors);
 
   const style = StyleSheet.create({
     screen: {
@@ -29,8 +30,8 @@ const AppNavigator = ({}) => {
             headerShown: false,
             tabBarStyle: {
               elevation: 0,
-              borderColor: "transparent",
-              shadowColor: "transparent",
+              borderColor: 'transparent',
+              shadowColor: 'transparent',
               backgroundColor: colors.card,
               borderRadius: 6,
               marginHorizontal: 20,
@@ -39,32 +40,32 @@ const AppNavigator = ({}) => {
           }}
         >
           <Tab.Screen
-            name="Centre"
+            name='Centre'
             component={CenterScreen}
             options={{
-              tabBarLabel: "Centre",
+              tabBarLabel: 'Centre',
               tabBarIcon: ({ color, size }) => (
-                <Ionicons name="apps" color={color} size={size} />
+                <Ionicons name='apps' color={color} size={size} />
               ),
             }}
           />
           <Tab.Screen
-            name="Module"
+            name='Module'
             component={ModuleScreen}
             options={{
-              tabBarLabel: "Module",
+              tabBarLabel: 'Module',
               tabBarIcon: ({ color, size }) => (
-                <Ionicons name="browsers" color={color} size={size} />
+                <Ionicons name='browsers' color={color} size={size} />
               ),
             }}
           />
           <Tab.Screen
-            name="Profil"
+            name='Profil'
             component={ProfilScreen}
             options={{
-              tabBarLabel: "Profil",
+              tabBarLabel: 'Profil',
               tabBarIcon: ({ color, size }) => (
-                <Ionicons name="body-sharp" color={color} size={size} />
+                <Ionicons name='body-sharp' color={color} size={size} />
               ),
             }}
           />

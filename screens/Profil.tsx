@@ -1,10 +1,11 @@
-import { View, StyleSheet, Image, Text } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import Notification from "../components/profil/Notification";
-import { useColors } from "../hooks";
+import { View, StyleSheet, Image, Text } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import Notification from '../components/profil/Notification';
+import { useSelector } from 'react-redux';
+import { selectColors } from '../store/slices/user-slice';
 
 const ProfilScreen = ({}) => {
-  const colors = useColors();
+  const colors = useSelector(selectColors);
 
   const styles = StyleSheet.create({
     screen: {
@@ -12,17 +13,17 @@ const ProfilScreen = ({}) => {
       backgroundColor: colors.white,
     },
     top: {
-      width: "100%",
+      width: '100%',
       height: 170,
       backgroundColor: colors.secondaryLight,
       marginBottom: 40,
     },
     image: {
-      width: "100%",
-      height: "100%",
+      width: '100%',
+      height: '100%',
     },
     imageContainer: {
-      position: "absolute",
+      position: 'absolute',
       top: 20,
       left: 15,
       borderRadius: 12,
@@ -30,7 +31,7 @@ const ProfilScreen = ({}) => {
       borderColor: colors.white,
       width: 150,
       height: 150,
-      overflow: "hidden",
+      overflow: 'hidden',
       marginVertical: 30,
     },
     contentContainer: {
@@ -39,8 +40,8 @@ const ProfilScreen = ({}) => {
       right: 10,
     },
     contentContainerTop: {
-      flexDirection: "row",
-      justifyContent: "space-between",
+      flexDirection: 'row',
+      justifyContent: 'space-between',
       marginBottom: 5,
     },
     name: {
@@ -50,18 +51,18 @@ const ProfilScreen = ({}) => {
       marginHorizontal: 20,
     },
     bottomNotif: {
-      flexDirection: "row",
+      flexDirection: 'row',
       marginBottom: 10,
     },
     bottomTabs: {
       backgroundColor: colors.secondaryLight,
-      flexDirection: "row",
+      flexDirection: 'row',
       borderRadius: 3,
     },
     bottomTab: {
       flex: 1,
       margin: 2,
-      alignItems: "center",
+      alignItems: 'center',
       paddingVertical: 10,
       borderRadius: 3,
     },
@@ -83,8 +84,8 @@ const ProfilScreen = ({}) => {
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={require("../assets/images/profil.png")}
-            resizeMode="cover"
+            source={require('../assets/images/profil.png')}
+            resizeMode='cover'
           />
         </View>
         <View style={styles.contentContainer}>
@@ -93,7 +94,7 @@ const ProfilScreen = ({}) => {
               <Text style={styles.name}>John</Text>
               <Text style={styles.name}>Simon</Text>
             </View>
-            <Ionicons name="settings" size={28} />
+            <Ionicons name='settings' size={28} />
           </View>
           <View>
             <Text>Misogyne oui, mais antisémite non.</Text>
