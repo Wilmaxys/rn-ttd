@@ -4,7 +4,7 @@ import Notification from '../components/profil/Notification';
 import { useSelector } from 'react-redux';
 import { selectColors } from '../store/slices/user-slice';
 
-const ProfilScreen = ({}) => {
+const ProfileScreen = ({}) => {
   const colors = useSelector(selectColors);
 
   const styles = StyleSheet.create({
@@ -126,4 +126,4 @@ const ProfilScreen = ({}) => {
   );
 };
 
-export default ProfilScreen;
+export default ProfileScreen;

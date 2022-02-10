@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { selectColors } from '../store/slices/user-slice';
 import { useSelector } from 'react-redux';
 
-const CenterScreen = ({}) => {
+const ActivityScreen = ({}) => {
   const colors = useSelector(selectColors);
 
   const styles = StyleSheet.create({
@@ -58,7 +58,7 @@ const CenterScreen = ({}) => {
         <Text style={styles.title}>11 May 2021</Text>
         <Notification />
         <Notification brown={true} />
-        <Notification brown={true} />
+        <Notification />
       </ScrollView>
       <LinearGradient
         colors={['transparent', colors.secondaryLight]}
@@ -70,4 +70,4 @@ const CenterScreen = ({}) => {
   );
 };
 
-export default CenterScreen;
+export default ActivityScreen;

@@ -1,5 +1,5 @@
-import CenterScreen from "./Center";
-import ModuleScreen from "./Module";
-import ProfilScreen from "./Profil";
+import ActivityScreen from './ActivityScreen';
+import ModuleScreen from './ModuleScreen';
+import ProfileScreen from './ProfileScreen';
 
-export { CenterScreen, ModuleScreen, ProfilScreen };
+export { ActivityScreen, ModuleScreen, ProfileScreen };
