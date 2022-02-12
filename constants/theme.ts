@@ -5,6 +5,9 @@ const defaultColors = {
   darkOrange: '#926953',
   lightOrange: '#EAE2D5',
 
+  warning: '#F1FA8C',
+  danger: '#FF6E67',
+
   black: '#1B1F24',
   gray: '#C4C4C4',
   white: '#FFFFFF',
@@ -25,6 +28,7 @@ const defaultTheme = {
     text: defaultColors.black,
     border: defaultColors.gray,
     notification: defaultColors.white,
+    danger:
   },
 };
 

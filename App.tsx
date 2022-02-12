@@ -7,7 +7,7 @@ import { persistor, store } from './store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { AppNavigator } from './navigation';
-import { Loader } from './components';
+import { Loader } from './components/global';
 
 const loadResourcesAsync = async (): Promise<void> => {
   return await Font.loadAsync({

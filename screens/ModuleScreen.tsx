@@ -3,15 +3,20 @@ import { Ionicons } from '@expo/vector-icons';
 import Header from '../components/Header';
 import Card from '../components/module/Card';
 import { useSelector } from 'react-redux';
-import { selectColors } from '../store/slices/user-slice';
-import { LinearGradient } from 'expo-linear-gradient';
+import { selectTheme } from '../store/slices/user-slice';
+import { useState } from 'react';
+import { AddModule } from '../components/module';
 
 const ModuleScreen = ({}) => {
-  const colors = useSelector(selectColors);
+  const theme = useSelector(selectTheme);
+  const { colors } = theme;
+
+  const [selectModuleVisible, setSelectModuleVisible] = useState(false);
 
   const styles = StyleSheet.create({
     screen: {
       flex: 1,
+      position: 'relative',
     },
     container: {
       flex: 1,
@@ -95,6 +100,7 @@ const ModuleScreen = ({}) => {
             <Card />
           </View>
         </ScrollView>
+        <AddModule style={{ position: 'absolute', bottom: 15, right: 15 }} />
       </View>
     </View>
   );
