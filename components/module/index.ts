@@ -1,4 +1,5 @@
 import Card from './Card';
-import AddModule from './AddModule';
+import SelectNewModule from './SelectNewModule';
+import EditListModule from './EditListModule';
 
-export { Card, AddModule };
+export { Card, SelectNewModule, EditListModule };

@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { AppNavigator } from './navigation';
 import { Loader } from './components/global';
+import { ModalProvider } from './components/modal';
 
 const loadResourcesAsync = async (): Promise<void> => {
   return await Font.loadAsync({
@@ -32,10 +33,12 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={<Loader />} persistor={persistor}>
-        <SafeAreaView style={{ flex: 1 }}>
-          <StatusBar style='auto' />
-          <AppNavigator />
-        </SafeAreaView>
+        <ModalProvider>
+          <SafeAreaView style={{ flex: 1 }}>
+            <StatusBar style='auto' />
+            <AppNavigator />
+          </SafeAreaView>
+        </ModalProvider>
       </PersistGate>
     </Provider>
   );

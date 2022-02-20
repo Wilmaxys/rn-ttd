@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { selectColors } from '../store/slices/user-slice';
 import { useSelector } from 'react-redux';
-import { ActivityScreen, ModuleScreen, ProfileScreen } from '../screens';
+import { ActivityScreen, ModulesScreen, ProfileScreen } from '../screens';
 import { Ionicons } from '@expo/vector-icons';
+import { themeSelector } from '../store/slices/user-slice';
 
 type Screen = {
   key: string;
@@ -15,7 +15,7 @@ type Screen = {
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = ({}) => {
-  const colors = useSelector(selectColors);
+  const { colors } = useSelector(themeSelector);
 
   const screens: Screen[] = [
     {
@@ -26,7 +26,7 @@ const TabNavigator = ({}) => {
     },
     {
       key: 'Module',
-      component: ModuleScreen,
+      component: ModulesScreen,
       displayName: 'Module',
       icon: 'browsers',
     },

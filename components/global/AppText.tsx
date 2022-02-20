@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Text, TextStyle } from 'react-native';
 import { useSelector } from 'react-redux';
-import { selectColors } from '../../store/slices/user-slice';
+import { themeSelector } from '../../store/slices/user-slice';
 
 type Props = {
-  children: JSX.Element[] | JSX.Element | string;
+  children: ReactNode;
   style?: TextStyle;
   type?: 'default' | 'title' | 'subtitle' | 'error';
 };
 
 const AppText = ({ children = '', style = {}, type = 'default' }: Props) => {
-  const colors = useSelector(selectColors);
+  const { colors } = useSelector(themeSelector);
 
   const defaultStyle: TextStyle = {
+    fontFamily: 'open-sans',
     color: colors.text,
-    fontSize: 12,
+    fontSize: 14,
   };
 
   switch (type) {
@@ -27,6 +28,9 @@ const AppText = ({ children = '', style = {}, type = 'default' }: Props) => {
       break;
     case 'error':
       defaultStyle.color = colors.danger;
+      defaultStyle.fontSize = 10;
+      defaultStyle.fontWeight = 'bold';
+      defaultStyle.textAlign = 'center';
       break;
 
     default:

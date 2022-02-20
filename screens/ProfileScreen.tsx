@@ -2,10 +2,10 @@ import { View, StyleSheet, Image, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Notification from '../components/profil/Notification';
 import { useSelector } from 'react-redux';
-import { selectColors } from '../store/slices/user-slice';
+import { themeSelector } from '../store/slices/user-slice';
 
 const ProfileScreen = ({}) => {
-  const colors = useSelector(selectColors);
+  const { colors } = useSelector(themeSelector);
 
   const styles = StyleSheet.create({
     screen: {

@@ -1,32 +1,60 @@
-import { NavigationContainer } from '@react-navigation/native';
+import {
+  getFocusedRouteNameFromRoute,
+  NavigationContainer,
+} from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { selectColors, selectTheme } from '../store/slices/user-slice';
+import { themeSelector } from '../store/slices/user-slice';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
+import { AppButton, AppText } from '../components/global';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AddListScreen } from '../screens';
 
 const Stack = createStackNavigator();
 
 const AppNavigator = ({}) => {
-  const theme = useSelector(selectTheme);
-  const colors = useSelector(selectColors);
-
-  const style = StyleSheet.create({
-    screen: {
-      flex: 1,
-      backgroundColor: colors.secondaryLight,
-    },
-  });
+  const theme = useSelector(themeSelector);
+  const { colors } = theme;
 
   return (
-    <View style={style.screen}>
+    <View style={{ flex: 1, backgroundColor: colors.secondaryLight }}>
       <NavigationContainer theme={theme}>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={({ navigation, route }) => ({
+            headerLeft: () => (
+              <AppButton
+                style={{
+                  borderRadius: 50,
+                  backgroundColor: colors.transparent,
+                  padding: 25,
+                }}
+                onPress={() => navigation.goBack()}
+              >
+                <MaterialCommunityIcons name='arrow-left' size={20} />
+              </AppButton>
+            ),
+            headerTitle: (props) => {
+              console.log('route', getFocusedRouteNameFromRoute, route);
+              return (
+                <AppText type='title'>
+                  {getFocusedRouteNameFromRoute(route)}
+                </AppText>
+              );
+            },
+            headerTitleAlign: 'center',
+          })}
+        >
           <Stack.Screen
             name='Home'
             component={TabNavigator}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='AddList'
+            component={AddListScreen}
+            options={{ title: 'Créer une liste' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

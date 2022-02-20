@@ -8,7 +8,7 @@ const defaultColors = {
   warning: '#F1FA8C',
   danger: '#FF6E67',
 
-  black: '#1B1F24',
+  black: '#282A36',
   gray: '#C4C4C4',
   white: '#FFFFFF',
   transparent: 'transparent',
@@ -23,12 +23,11 @@ const defaultTheme = {
     primaryLight: defaultColors.lightGreen,
     secondary: defaultColors.darkOrange,
     secondaryLight: defaultColors.lightOrange,
-    background: defaultColors.transparent,
+    background: defaultColors.lightOrange,
     card: defaultColors.white,
     text: defaultColors.black,
     border: defaultColors.gray,
     notification: defaultColors.white,
-    danger:
   },
 };
 

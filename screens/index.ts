@@ -1,5 +1,7 @@
 import ActivityScreen from './ActivityScreen';
-import ModuleScreen from './ModuleScreen';
 import ProfileScreen from './ProfileScreen';
 
-export { ActivityScreen, ModuleScreen, ProfileScreen };
+import ModulesScreen from './module/ModulesScreen';
+import AddListScreen from './module/AddListScreen';
+
+export { ActivityScreen, ProfileScreen, ModulesScreen, AddListScreen };

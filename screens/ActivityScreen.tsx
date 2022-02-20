@@ -2,11 +2,11 @@ import { StyleSheet, Text, ScrollView, ImageBackground } from 'react-native';
 import Notification from '../components/center/Notification';
 import Header from '../components/Header';
 import { LinearGradient } from 'expo-linear-gradient';
-import { selectColors } from '../store/slices/user-slice';
 import { useSelector } from 'react-redux';
+import { themeSelector } from '../store/slices/user-slice';
 
 const ActivityScreen = ({}) => {
-  const colors = useSelector(selectColors);
+  const { colors } = useSelector(themeSelector);
 
   const styles = StyleSheet.create({
     container: {

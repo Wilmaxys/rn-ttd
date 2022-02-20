@@ -1,17 +1,14 @@
 import { View, StyleSheet, Text, TextInput, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import Header from '../components/Header';
-import Card from '../components/module/Card';
+import Header from '../../components/Header';
+import Card from '../../components/module/Card';
 import { useSelector } from 'react-redux';
-import { selectTheme } from '../store/slices/user-slice';
-import { useState } from 'react';
-import { AddModule } from '../components/module';
+import { themeSelector } from '../../store/slices/user-slice';
+import { SelectNewModule } from '../../components/module';
 
-const ModuleScreen = ({}) => {
-  const theme = useSelector(selectTheme);
+const ModulesScreen = ({}) => {
+  const theme = useSelector(themeSelector);
   const { colors } = theme;
-
-  const [selectModuleVisible, setSelectModuleVisible] = useState(false);
 
   const styles = StyleSheet.create({
     screen: {
@@ -100,10 +97,12 @@ const ModuleScreen = ({}) => {
             <Card />
           </View>
         </ScrollView>
-        <AddModule style={{ position: 'absolute', bottom: 15, right: 15 }} />
+        <SelectNewModule
+          style={{ position: 'absolute', bottom: 0, right: 15 }}
+        />
       </View>
     </View>
   );
 };
 
-export default ModuleScreen;
+export default ModulesScreen;

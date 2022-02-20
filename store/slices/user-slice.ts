@@ -1,15 +1,15 @@
-import { defaultTheme } from "../../constants";
-import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "..";
+import { defaultTheme } from '../../constants';
+import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '..';
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState: {
     theme: defaultTheme,
   },
   reducers: {
-    setTheme(state, action) {
-      state.theme = action.payload;
+    setTheme(state, { payload }) {
+      state.theme = payload;
     },
   },
 });
@@ -17,7 +17,6 @@ const userSlice = createSlice({
 const { actions, reducer } = userSlice;
 export const { setTheme } = actions;
 
-export const selectTheme = (state: RootState) => state.user.theme;
-export const selectColors = (state: RootState) => state.user.theme.colors;
+export const themeSelector = (state: RootState) => state.user.theme;
 
 export default reducer;

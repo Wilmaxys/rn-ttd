@@ -14,7 +14,7 @@ import rootSlice from './slices';
 
 const persistConfig = {
   key: 'root',
-  whitelist: ['user'],
+  blacklist: ['modal'],
   storage: ExpoFileSystemStorage,
 };
 
