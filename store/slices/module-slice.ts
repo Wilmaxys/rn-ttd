@@ -13,7 +13,11 @@ const moduleSlice = createSlice({
       state.modules = payload;
     },
     addModule(state, { payload }: PayloadAction<Module>) {
-      state.modules.push({ ...payload, id: createGuid() });
+      state.modules.push({
+        ...payload,
+        id: createGuid(),
+        createdAt: new Date().toUTCString(),
+      });
     },
     updateModule(state, { payload }: PayloadAction<Module>) {
       const index = state.modules.findIndex(

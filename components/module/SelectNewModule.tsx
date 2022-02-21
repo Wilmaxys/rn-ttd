@@ -13,7 +13,8 @@ import { width } from '../../constants';
 import { themeSelector } from '../../store/slices/user-slice';
 import { BaseModule } from '../../types';
 import { AppCard, AppText, AppButton } from '../global';
-import { ModalContext } from '../modal/ModalProvider';
+import { ModalContext } from '../modal';
+import { EditTrackerModule } from '.';
 
 type ModuleSelectorItem = BaseModule & {
   component: () => ReactNode;
@@ -29,10 +30,10 @@ const modules: ModuleSelectorItem[] = [
     component: () => <EditListModule />,
   },
   {
-    title: 'Liste basique',
-    description: "Afficher une liste d'information simple",
-    image: require('../../assets/images/numberedlist.jpg'),
-    component: () => <EditListModule />,
+    title: 'Tracker',
+    description: 'Suivez vous au rythme que vous souhaîtez',
+    image: require('../../assets/images/trackers.png'),
+    component: () => <EditTrackerModule />,
   },
   {
     title: 'Liste basique',
@@ -44,7 +45,7 @@ const modules: ModuleSelectorItem[] = [
     title: 'Tracker',
     description: 'Suivez vous au rythme que vous souhaîtez',
     image: require('../../assets/images/trackers.png'),
-    component: () => <EditListModule />,
+    component: () => <EditTrackerModule />,
   },
 ];
 

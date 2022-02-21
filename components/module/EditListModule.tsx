@@ -1,11 +1,9 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View } from 'react-native';
-import DraggableFlatList from 'react-native-draggable-flatlist';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../store';
 import { addModule, moduleSelector } from '../../store/slices/module-slice';
-import { themeSelector } from '../../store/slices/user-slice';
 import { ListModule } from '../../types';
 import {
   AppButton,
@@ -14,7 +12,7 @@ import {
   FormButtons,
   FormInput,
 } from '../global';
-import { ModalContext } from '../modal/ModalProvider';
+import { ModalContext } from '../modal';
 
 type Props = {
   id?: string;
@@ -30,19 +28,22 @@ const EditListModule = ({ id }: Props) => {
       ? useSelector(moduleSelector(id))
       : {
           title: '',
-          items: [],
+          items: [''],
         }
   ) as ListModule;
 
   const { hideModal } = useContext(ModalContext);
 
-  const { colors } = useSelector(themeSelector);
-
   const [showErrors, setShowErrors] = useState(false);
-  const [newItem, setNewItem] = useState('');
 
   const [title, setTitle] = useState(module.title);
   const [items, setItems] = useState(module.items);
+
+  const updateItem = (index: number, item: string) => {
+    const clone = [...items];
+    clone[index] = item;
+    setItems(clone);
+  };
 
   const saveList = () => {
     if (!title || items.length === 0) {
@@ -59,28 +60,6 @@ const EditListModule = ({ id }: Props) => {
     hideModal();
   };
 
-  const _renderListItem = useCallback((item: string, index: number) => {
-    return (
-      <View
-        key={`listItem${index}`}
-        style={{
-          elevation: 2,
-          marginBottom: 5,
-          padding: 5,
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}
-      >
-        <AppText style={{ flex: 1 }}>
-          <AppText style={{ marginHorizontal: 5, fontWeight: 'bold' }}>
-            {`${index + 1}. `}
-          </AppText>
-          {item}
-        </AppText>
-      </View>
-    );
-  }, []);
-
   return (
     <View style={{ paddingHorizontal: 25 }}>
       <AppTextInput
@@ -92,43 +71,47 @@ const EditListModule = ({ id }: Props) => {
       />
 
       <FormInput label='Éléments'>
-        {items.length === 0 ? (
-          <AppText>Vide...</AppText>
-        ) : (
-          items.map(_renderListItem)
-        )}
+        {items.map((item, index) => (
+          <AppTextInput
+            key={`listItem${index}`}
+            value={item}
+            onChangeText={(text) => updateItem(index, text)}
+            onSubmitEditing={() => {
+              setItems([...items, '']);
+            }}
+            renderAfter={() => (
+              <AppButton
+                variant='secondary'
+                onPress={() => {
+                  if (items.length > 1) {
+                    setItems(items.filter((_, i) => i !== index));
+                  } else {
+                    setItems(['']);
+                  }
+                }}
+                style={{
+                  padding: 8,
+                }}
+              >
+                <MaterialCommunityIcons name='close' size={20} />
+              </AppButton>
+            )}
+            renderBefore={() => (
+              <AppText style={{ marginLeft: 10, fontWeight: 'bold' }}>
+                {`${index + 1}. `}
+              </AppText>
+            )}
+            style={{
+              padding: 5,
+            }}
+            containerStyle={{
+              flex: 1,
+              marginHorizontal: 10,
+              marginBottom: 10,
+            }}
+          />
+        ))}
       </FormInput>
-
-      <View
-        style={{
-          marginBottom: 15,
-          flexDirection: 'row',
-          alignItems: 'flex-end',
-        }}
-      >
-        <AppTextInput
-          label='Nouvel élément'
-          value={newItem}
-          onChangeText={setNewItem}
-          containerStyle={{ marginBottom: 0, flex: 1, marginRight: 5 }}
-          style={{ borderWidth: 0 }}
-        />
-
-        <AppButton
-          disabled={!newItem}
-          onPress={() => {
-            setItems([...items, newItem]);
-            setNewItem('');
-          }}
-          style={{
-            margin: 0,
-            padding: 11,
-          }}
-          variant='secondary'
-        >
-          <MaterialCommunityIcons name='plus' size={25} />
-        </AppButton>
-      </View>
 
       <FormButtons
         okText={edit ? 'Modifier' : 'Ajouter'}

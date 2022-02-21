@@ -15,6 +15,7 @@ export type ModuleType = {
 export type BaseModule = {
   id?: string;
   title: string;
+  createdAt?: string;
 };
 
 export type ListModule = BaseModule & {
@@ -22,7 +23,7 @@ export type ListModule = BaseModule & {
 };
 
 export type TrackerModule = BaseModule & {
-  days: { date: Date; value: number }[];
+  days: { date: string; value: number }[];
 };
 
 export type Module = ListModule | TrackerModule;

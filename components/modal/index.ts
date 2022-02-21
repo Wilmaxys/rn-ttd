@@ -1,4 +1,4 @@
 import AppModal from './AppModal';
-import ModalProvider from './ModalProvider';
+import ModalProvider, { ModalContext } from './ModalProvider';
 
-export { AppModal, ModalProvider };
+export { AppModal, ModalProvider, ModalContext };
