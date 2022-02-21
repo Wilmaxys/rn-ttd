@@ -2,7 +2,11 @@ import React, { useContext, useState } from 'react';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../store';
-import { addModule, moduleSelector } from '../../store/slices/module-slice';
+import {
+  addModule,
+  moduleSelector,
+  updateModule,
+} from '../../store/slices/module-slice';
 import { TrackerModule } from '../../types';
 import { AppTextInput, FormButtons } from '../global';
 import { ModalContext } from '../modal';
@@ -38,10 +42,16 @@ const EditTrackerModule = ({ id }: Props) => {
     }
 
     dispatch(
-      addModule({
-        title,
-        days: [],
-      })
+      edit
+        ? updateModule({
+            id,
+            title,
+            days: module.days,
+          })
+        : addModule({
+            title,
+            days: [],
+          })
     );
     hideModal();
   };

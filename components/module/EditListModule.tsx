@@ -3,7 +3,11 @@ import React, { useContext, useState } from 'react';
 import { View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../store';
-import { addModule, moduleSelector } from '../../store/slices/module-slice';
+import {
+  addModule,
+  moduleSelector,
+  updateModule,
+} from '../../store/slices/module-slice';
 import { ListModule } from '../../types';
 import {
   AppButton,
@@ -52,10 +56,16 @@ const EditListModule = ({ id }: Props) => {
     }
 
     dispatch(
-      addModule({
-        title,
-        items,
-      })
+      edit
+        ? updateModule({
+            id,
+            title,
+            items,
+          })
+        : addModule({
+            title,
+            items,
+          })
     );
     hideModal();
   };

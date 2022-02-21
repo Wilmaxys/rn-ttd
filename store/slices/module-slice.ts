@@ -17,6 +17,7 @@ const moduleSlice = createSlice({
         ...payload,
         id: createGuid(),
         createdAt: new Date().toUTCString(),
+        lastUsedAt: new Date().toUTCString(),
       });
     },
     updateModule(state, { payload }: PayloadAction<Module>) {

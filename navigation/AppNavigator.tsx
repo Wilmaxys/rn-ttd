@@ -10,7 +10,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
 import { AppButton, AppText } from '../components/global';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { AddListScreen } from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -50,11 +49,6 @@ const AppNavigator = ({}) => {
             name='Home'
             component={TabNavigator}
             options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name='AddList'
-            component={AddListScreen}
-            options={{ title: 'Créer une liste' }}
           />
         </Stack.Navigator>
       </NavigationContainer>

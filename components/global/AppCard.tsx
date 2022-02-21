@@ -3,28 +3,31 @@ import {
   Image,
   ImageRequireSource,
   ImageURISource,
-  TouchableOpacity,
   View,
+  ViewProps,
+  ViewStyle,
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import AppText from './AppText';
 import AppButton from './inputs/AppButton';
 import { themeSelector } from '../../store/slices/user-slice';
 
-type Props = {
-  title?: string;
+type Props = ViewProps & {
   children?: ReactNode;
-  onPress?: () => void;
   disabled?: boolean;
   imageSource?: ImageRequireSource | ImageURISource;
+  onPress?: () => void;
+  title?: string;
 };
 
 const AppCard = ({
-  title,
   children,
-  onPress,
   disabled = false,
   imageSource,
+  onPress,
+  style = {},
+  title,
+  ...props
 }: Props) => {
   const { colors } = useSelector(themeSelector);
 
@@ -37,9 +40,11 @@ const AppCard = ({
         borderWidth: 1,
         borderColor: colors.border,
         backgroundColor: colors.card,
-        padding: 0,
         overflow: 'hidden',
+        ...(style as ViewStyle),
+        padding: 0,
       }}
+      {...props}
     >
       {imageSource !== undefined && (
         <View
@@ -58,7 +63,14 @@ const AppCard = ({
           />
         </View>
       )}
-      <View style={{ padding: 15 }}>
+      <View
+        style={{
+          padding: 15,
+          ...(style as ViewStyle),
+          margin: 0,
+          borderWidth: 0,
+        }}
+      >
         {title !== undefined && <AppText type='title'>{title}</AppText>}
         {children}
       </View>

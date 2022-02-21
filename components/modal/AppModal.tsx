@@ -59,6 +59,7 @@ const AppModal = ({
           borderTopRightRadius: 25,
           paddingVertical: 15,
           width: '100%',
+          maxHeight: '95%',
           backgroundColor: colors.white,
         }}
       >

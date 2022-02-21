@@ -16,6 +16,7 @@ export type BaseModule = {
   id?: string;
   title: string;
   createdAt?: string;
+  lastUsedAt?: string;
 };
 
 export type ListModule = BaseModule & {

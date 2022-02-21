@@ -1,14 +1,29 @@
 import { View, StyleSheet, Text, TextInput, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Header from '../../components/Header';
-import Card from '../../components/module/Card';
+import ModuleCard from '../../components/module/ModuleCard';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../../store/slices/user-slice';
 import { SelectNewModule } from '../../components/module';
+import { modulesSelector } from '../../store/slices/module-slice';
+import moment, { Moment } from 'moment';
+import { useCallback, useState } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
+import { AppText, AppTextInput } from '../../components/global';
 
 const ModulesScreen = ({}) => {
   const theme = useSelector(themeSelector);
   const { colors } = theme;
+
+  const modules = useSelector(modulesSelector);
+
+  const [recentLimit, setRecentLimit] = useState<Moment | null>(null);
+
+  useFocusEffect(
+    useCallback(() => {
+      setRecentLimit(moment().subtract(3, 'd'));
+    }, [])
+  );
 
   const styles = StyleSheet.create({
     screen: {
@@ -18,29 +33,6 @@ const ModulesScreen = ({}) => {
     container: {
       flex: 1,
       margin: 20,
-    },
-    inputContainer: {
-      borderWidth: 1,
-      borderRadius: 5,
-      borderColor: colors.primaryLight,
-      backgroundColor: colors.white,
-      flexDirection: 'row',
-      alignItems: 'center',
-      paddingHorizontal: 10,
-      marginBottom: 10,
-    },
-    input: {
-      paddingVertical: 10,
-      flex: 1,
-    },
-    inputVector: {
-      color: colors.primaryLight,
-      marginRight: 10,
-    },
-    title: {
-      fontSize: 18,
-      color: colors.text,
-      marginVertical: 10,
     },
     footer: {
       position: 'absolute',
@@ -54,48 +46,61 @@ const ModulesScreen = ({}) => {
     },
   });
 
+  const recentModules = modules.filter((module) =>
+    moment(module.lastUsedAt).isAfter(recentLimit)
+  );
+  const oldModules = modules.filter((module) =>
+    moment(module.lastUsedAt).isBefore(recentLimit)
+  );
+
   return (
     <View style={styles.screen}>
       <Header title='Modules' />
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <Ionicons style={styles.inputVector} size={24} name='search' />
-          <TextInput
-            blurOnSubmit
-            placeholder='Rechercher...'
-            autoCorrect={false}
-            style={styles.input}
-          />
-        </View>
+        <AppTextInput
+          placeholder='Rechercher...'
+          renderBefore={() => (
+            <MaterialCommunityIcons
+              color={colors.primary}
+              name='magnify'
+              size={24}
+              style={{ marginLeft: 15 }}
+            />
+          )}
+          style={{ backgroundColor: colors.white }}
+        />
         <ScrollView style={{ flex: 1, paddingBottom: 200 }}>
-          <Text style={styles.title}>Récents</Text>
-          <View
-            onStartShouldSetResponder={() => true}
-            style={styles.cardContainer}
-          >
-            <Card />
-            <Card />
-            <Card />
-          </View>
-          <Text style={styles.title}>Modules</Text>
-          <View
-            onStartShouldSetResponder={() => true}
-            style={styles.cardContainer}
-          >
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </View>
+          {recentModules.length > 0 && (
+            <View>
+              <AppText type='subtitle'>Récents</AppText>
+              <View
+                onStartShouldSetResponder={() => true}
+                style={styles.cardContainer}
+              >
+                {recentModules.map((module, index) => (
+                  <View
+                    key={`recentModule${index}`}
+                    style={{ width: '48%', marginRight: '1%' }}
+                  >
+                    <ModuleCard module={module} />
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
+          {oldModules.length > 0 && (
+            <View>
+              <AppText type='subtitle'>Modules</AppText>
+              <View
+                onStartShouldSetResponder={() => true}
+                style={styles.cardContainer}
+              >
+                {oldModules.map((module, index) => (
+                  <ModuleCard key={`oldModule${index}`} module={module} />
+                ))}
+              </View>
+            </View>
+          )}
         </ScrollView>
         <SelectNewModule
           style={{ position: 'absolute', bottom: 0, right: 15 }}

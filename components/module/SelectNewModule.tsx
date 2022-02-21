@@ -1,5 +1,5 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React, { ReactNode, useCallback, useContext, useState } from 'react';
+import React, { ReactNode, useCallback, useContext } from 'react';
 import {
   ImageRequireSource,
   ImageURISource,
@@ -14,7 +14,7 @@ import { themeSelector } from '../../store/slices/user-slice';
 import { BaseModule } from '../../types';
 import { AppCard, AppText, AppButton } from '../global';
 import { ModalContext } from '../modal';
-import { EditTrackerModule } from '.';
+import EditTrackerModule from './EditTrackerModule';
 
 type ModuleSelectorItem = BaseModule & {
   component: () => ReactNode;
@@ -70,7 +70,7 @@ const SelectNewModule = ({ style = {} }: Props) => {
               title={module.title}
               onPress={() => {
                 setModalOptions({
-                  title: `Ajouter une ${module.title.toLowerCase()}`,
+                  title: module.title,
                   renderBody: module.component,
                 });
               }}
