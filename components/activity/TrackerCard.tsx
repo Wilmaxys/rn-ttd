@@ -90,7 +90,7 @@ const TrackerCard = ({ module, date, value }: Props) => {
       >
         <MaterialCommunityIcons
           color={colors.white}
-          name='emoticon-happy'
+          name='emoticon-happy-outline'
           size={35}
         />
       </View>

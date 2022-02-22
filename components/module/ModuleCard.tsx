@@ -1,5 +1,5 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { ReactNode, useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import EditListModule from './EditListModule';
 import EditTrackerModule from './EditTrackerModule';
@@ -33,6 +33,16 @@ const ModuleCard = ({ module }: Props) => {
     }
   };
 
+  const getIcon = () => {
+    if ((module as ListModule).items) {
+      return 'format-list-numbered';
+    } else if ((module as TrackerModule).days) {
+      return 'emoticon-happy-outline';
+    }
+
+    return 'tune';
+  };
+
   return (
     <AppCard
       onPress={onPress}
@@ -46,7 +56,7 @@ const ModuleCard = ({ module }: Props) => {
       <AppText style={{ maxWidth: '80%', fontWeight: 'bold' }}>
         {module.title}
       </AppText>
-      <MaterialCommunityIcons color={colors.text} name='tune' size={24} />
+      <MaterialCommunityIcons color={colors.text} name={getIcon()} size={24} />
     </AppCard>
   );
 };
