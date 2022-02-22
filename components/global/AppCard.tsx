@@ -37,8 +37,6 @@ const AppCard = ({
       onPress={onPress}
       style={{
         borderRadius: 15,
-        borderWidth: 1,
-        borderColor: colors.border,
         backgroundColor: colors.card,
         overflow: 'hidden',
         ...(style as ViewStyle),

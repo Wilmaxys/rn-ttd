@@ -1,6 +1,6 @@
 import ActivityScreen from './ActivityScreen';
 import ProfileScreen from './ProfileScreen';
+import ModulesScreen from './ModulesScreen';
+import SettingsScreen from './SettingsScreen';
 
-import ModulesScreen from './module/ModulesScreen';
-
-export { ActivityScreen, ProfileScreen, ModulesScreen };
+export { ActivityScreen, ProfileScreen, ModulesScreen, SettingsScreen };

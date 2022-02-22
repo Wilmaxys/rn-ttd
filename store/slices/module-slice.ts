@@ -16,8 +16,8 @@ const moduleSlice = createSlice({
       state.modules.push({
         ...payload,
         id: createGuid(),
-        createdAt: new Date().toUTCString(),
-        lastUsedAt: new Date().toUTCString(),
+        createdAt: new Date().toISOString(),
+        lastUsedAt: new Date().toISOString(),
       });
     },
     updateModule(state, { payload }: PayloadAction<Module>) {
@@ -27,7 +27,10 @@ const moduleSlice = createSlice({
 
       if (index === -1) return;
 
-      state.modules.splice(index, 1, payload);
+      state.modules.splice(index, 1, {
+        ...payload,
+        lastUsedAt: new Date().toISOString(),
+      });
     },
     removeModule(state, { payload }: PayloadAction<Module | number>) {
       const id = typeof payload === 'number' ? payload : payload.id;

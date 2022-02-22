@@ -75,6 +75,10 @@ const SelectNewModule = ({ style = {} }: Props) => {
                 });
               }}
               imageSource={module.image}
+              style={{
+                borderWidth: 1,
+                borderColor: colors.border,
+              }}
             >
               <AppText>{module.description}</AppText>
             </AppCard>

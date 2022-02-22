@@ -45,9 +45,10 @@ const AppButton = ({
       <Pressable
         android_ripple={{
           color: `${colors.black}22`,
-          radius: 1000,
+          radius: 20,
           borderless: true,
         }}
+        disabled={disabled}
         style={{
           padding: 15,
           ...(style as ViewStyle),
@@ -75,5 +76,7 @@ const AppButton = ({
     </View>
   );
 };
+
+export type AppButtonsProps = Props;
 
 export default AppButton;

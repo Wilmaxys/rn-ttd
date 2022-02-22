@@ -57,10 +57,10 @@ const AppModal = ({
           position: 'relative',
           borderTopLeftRadius: 25,
           borderTopRightRadius: 25,
+          backgroundColor: colors.white,
           paddingVertical: 15,
           width: '100%',
-          maxHeight: '95%',
-          backgroundColor: colors.white,
+          maxHeight: '100%',
         }}
       >
         <View

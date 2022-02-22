@@ -1,15 +1,15 @@
 import { View, StyleSheet, Text, TextInput, ScrollView } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Header from '../../components/Header';
-import ModuleCard from '../../components/module/ModuleCard';
+import Header from '../components/Header';
+import ModuleCard from '../components/module/ModuleCard';
 import { useSelector } from 'react-redux';
-import { themeSelector } from '../../store/slices/user-slice';
-import { SelectNewModule } from '../../components/module';
-import { modulesSelector } from '../../store/slices/module-slice';
+import { themeSelector } from '../store/slices/user-slice';
+import { SelectNewModule } from '../components/module';
+import { modulesSelector } from '../store/slices/module-slice';
 import moment, { Moment } from 'moment';
 import { useCallback, useState } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import { AppText, AppTextInput } from '../../components/global';
+import { AppText, AppTextInput } from '../components/global';
 
 const ModulesScreen = ({}) => {
   const theme = useSelector(themeSelector);
@@ -80,7 +80,7 @@ const ModulesScreen = ({}) => {
                 {recentModules.map((module, index) => (
                   <View
                     key={`recentModule${index}`}
-                    style={{ width: '48%', marginRight: '1%' }}
+                    style={{ width: '47%', marginRight: '2%' }}
                   >
                     <ModuleCard module={module} />
                   </View>

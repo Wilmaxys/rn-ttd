@@ -73,7 +73,7 @@ const Notification = ({ brown = false }) => {
       color: colors.text,
     },
     image: {
-      marginVertical: 10,
+      marginTop: 20,
       borderRadius: 10,
       backgroundColor: 'white',
       width: '100%',
@@ -133,7 +133,7 @@ const Notification = ({ brown = false }) => {
         <View style={styles.cardContent}>
           <View style={styles.cardContentTop}>
             <Text style={styles.cardContentTopTitle}>TDD Wireframe</Text>
-            <Text style={styles.hourText}>00:42:21</Text>
+            <Text style={styles.hourText}>13:42</Text>
           </View>
           <View style={styles.cardContentBottom}>
             <View

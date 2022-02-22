@@ -62,6 +62,7 @@ const EditTrackerModule = ({ id }: Props) => {
         label='Titre'
         value={title}
         onChangeText={setTitle}
+        onSubmitEditing={saveList}
         required
         showErrors={showErrors}
       />

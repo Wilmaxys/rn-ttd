@@ -1,12 +1,61 @@
-import { StyleSheet, Text, ScrollView, ImageBackground } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  ScrollView,
+  ImageBackground,
+  View,
+} from 'react-native';
 import Notification from '../components/center/Notification';
 import Header from '../components/Header';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../store/slices/user-slice';
+import { modulesSelector } from '../store/slices/module-slice';
+import { TrackerModule } from '../types';
+import moment from 'moment';
+import TrackerCard from '../components/activity/TrackerCard';
+import { AppText } from '../components/global';
 
 const ActivityScreen = ({}) => {
   const { colors } = useSelector(themeSelector);
+
+  const modules = useSelector(modulesSelector);
+  const trackers = modules.filter(
+    (module) => (module as TrackerModule).days
+  ) as TrackerModule[];
+
+  const dates: { [key: string]: { tracker: TrackerModule; value?: number }[] } =
+    {};
+
+  const currentDate = moment().format('YYYYMMDD');
+  trackers.forEach((tracker) => {
+    let currentDateDone = false;
+
+    tracker.days.forEach((day) => {
+      const date = moment(day.date).format('YYYYMMDD');
+
+      if (date === currentDate) {
+        currentDateDone = true;
+      }
+
+      if (!dates[date]) {
+        dates[date] = [];
+      }
+
+      dates[date].push({
+        tracker: tracker,
+        value: day.value,
+      });
+    });
+
+    if (!currentDateDone) {
+      if (!dates[currentDate]) {
+        dates[currentDate] = [];
+      }
+
+      dates[currentDate].push({ tracker });
+    }
+  });
 
   const styles = StyleSheet.create({
     container: {
@@ -48,17 +97,37 @@ const ActivityScreen = ({}) => {
     >
       <Header title='Activités' />
       <ScrollView contentContainerStyle={styles.screen}>
-        <Text style={styles.title}>Today</Text>
-        <Notification />
-        <Notification brown={true} />
-        <Text style={styles.title}>Yesterday</Text>
-        <Notification />
-        <Notification brown={true} />
-        <Notification />
-        <Text style={styles.title}>11 May 2021</Text>
-        <Notification />
-        <Notification brown={true} />
-        <Notification />
+        {Object.keys(dates)
+          .sort((a, b) => parseInt(b) - parseInt(a))
+          .map((key, dateIndex) => {
+            const date = moment(key);
+            const displayDate = date.calendar(null, {
+              sameDay: "[Aujourd'hui]",
+              lastDay: '[Hier]',
+              sameElse: date.format('DD MMMM YYYY'),
+            });
+
+            return (
+              <View key={`date${dateIndex}`}>
+                <AppText
+                  type='subtitle'
+                  style={{ marginBottom: 5, marginTop: 15 }}
+                >
+                  {displayDate}
+                </AppText>
+                {dates[key].map(({ tracker, value }, index) => (
+                  <TrackerCard
+                    key={`tracker${index}`}
+                    module={tracker}
+                    date={date}
+                    value={value}
+                  />
+                ))}
+                <Notification />
+                <Notification brown={true} />
+              </View>
+            );
+          })}
       </ScrollView>
       <LinearGradient
         colors={['transparent', colors.secondaryLight]}

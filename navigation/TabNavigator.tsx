@@ -27,7 +27,7 @@ const TabNavigator = ({}) => {
     {
       key: 'Module',
       component: ModulesScreen,
-      displayName: 'Module',
+      displayName: 'Modules',
       icon: 'browsers',
     },
     {

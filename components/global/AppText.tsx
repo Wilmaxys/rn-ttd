@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { themeSelector } from '../../store/slices/user-slice';
 
 type Props = {
-  children: ReactNode;
+  children?: ReactNode;
   style?: TextStyle;
   type?: 'default' | 'title' | 'subtitle' | 'error';
 };
@@ -25,6 +25,7 @@ const AppText = ({ children = '', style = {}, type = 'default' }: Props) => {
       break;
     case 'subtitle':
       defaultStyle.fontSize = 18;
+      defaultStyle.fontWeight = '600';
       break;
     case 'error':
       defaultStyle.color = colors.danger;

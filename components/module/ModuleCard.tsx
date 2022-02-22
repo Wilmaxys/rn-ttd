@@ -43,7 +43,9 @@ const ModuleCard = ({ module }: Props) => {
         justifyContent: 'space-between',
       }}
     >
-      <AppText style={{ fontWeight: 'bold' }}>{module.title}</AppText>
+      <AppText style={{ maxWidth: '80%', fontWeight: 'bold' }}>
+        {module.title}
+      </AppText>
       <MaterialCommunityIcons color={colors.text} name='tune' size={24} />
     </AppCard>
   );
