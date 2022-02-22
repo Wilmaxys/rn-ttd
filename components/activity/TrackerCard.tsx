@@ -64,7 +64,7 @@ const TrackerCard = ({ module, date, value }: Props) => {
           borderRadius: 10,
           borderWidth: selected ? 0 : 3,
           backgroundColor: color,
-          padding: selected ? 20 : 17,
+          padding: selected ? 21 : 17,
         }}
       ></AppButton>
     );

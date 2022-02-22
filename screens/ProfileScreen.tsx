@@ -1,11 +1,14 @@
 import { View, StyleSheet, Image, Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import Notification from '../components/profil/Notification';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../store/slices/user-slice';
+import { useNavigation } from '@react-navigation/native';
+import { AppButton } from '../components/global';
 
 const ProfileScreen = ({}) => {
   const { colors } = useSelector(themeSelector);
+  const navigation = useNavigation();
 
   const styles = StyleSheet.create({
     screen: {
@@ -94,7 +97,13 @@ const ProfileScreen = ({}) => {
               <Text style={styles.name}>John</Text>
               <Text style={styles.name}>Simon</Text>
             </View>
-            <Ionicons name='settings' size={28} />
+            <AppButton
+              onPress={() => navigation.navigate('QuestionsStart')}
+              variant='secondary'
+              style={{ margin: 0 }}
+            >
+              <MaterialCommunityIcons name='cog' size={24} />
+            </AppButton>
           </View>
           <View>
             <Text>Misogyne oui, mais antisémite non.</Text>

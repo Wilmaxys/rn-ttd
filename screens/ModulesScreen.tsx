@@ -69,7 +69,12 @@ const ModulesScreen = ({}) => {
           )}
           style={{ backgroundColor: colors.white }}
         />
-        <ScrollView style={{ flex: 1, paddingBottom: 200 }}>
+        <ScrollView
+          style={{
+            flex: 1,
+            paddingBottom: 200,
+          }}
+        >
           {recentModules.length > 0 && (
             <View>
               <AppText type='subtitle'>Récents</AppText>
@@ -80,7 +85,10 @@ const ModulesScreen = ({}) => {
                 {recentModules.map((module, index) => (
                   <View
                     key={`recentModule${index}`}
-                    style={{ width: '47%', marginRight: '2%' }}
+                    style={{
+                      width: '47%',
+                      marginRight: '2%',
+                    }}
                   >
                     <ModuleCard module={module} />
                   </View>
@@ -96,7 +104,15 @@ const ModulesScreen = ({}) => {
                 style={styles.cardContainer}
               >
                 {oldModules.map((module, index) => (
-                  <ModuleCard key={`oldModule${index}`} module={module} />
+                  <View
+                    key={`oldModule${index}`}
+                    style={{
+                      width: '47%',
+                      marginRight: '2%',
+                    }}
+                  >
+                    <ModuleCard module={module} />
+                  </View>
                 ))}
               </View>
             </View>

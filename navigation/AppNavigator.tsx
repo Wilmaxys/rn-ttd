@@ -10,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
 import { AppButton, AppText } from '../components/global';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { QuestionsScreen } from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -18,36 +19,45 @@ const AppNavigator = ({}) => {
   const { colors } = theme;
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.secondaryLight }}>
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
       <NavigationContainer theme={theme}>
         <Stack.Navigator
           screenOptions={({ navigation, route }) => ({
             headerLeft: () => (
               <AppButton
-                style={{
-                  borderRadius: 50,
-                  backgroundColor: colors.transparent,
-                  padding: 25,
-                }}
+                style={{ padding: 13 }}
+                variant='secondary'
                 onPress={() => navigation.goBack()}
               >
-                <MaterialCommunityIcons name='arrow-left' size={20} />
+                <MaterialCommunityIcons
+                  name='arrow-left'
+                  size={20}
+                  color={colors.text}
+                />
               </AppButton>
             ),
-            headerTitle: (props) => {
-              console.log('route', getFocusedRouteNameFromRoute, route);
-              return (
-                <AppText type='title'>
-                  {getFocusedRouteNameFromRoute(route)}
-                </AppText>
-              );
+            headerTitle: getFocusedRouteNameFromRoute(route),
+            headerTitleStyle: {
+              fontFamily: 'open-sans',
+              color: colors.text,
+              fontSize: 24,
+              fontWeight: 'bold',
             },
             headerTitleAlign: 'center',
+            headerStyle: {
+              backgroundColor: colors.background,
+              elevation: 0,
+            },
           })}
         >
           <Stack.Screen
             name='Home'
             component={TabNavigator}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='QuestionsStart'
+            component={QuestionsScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
