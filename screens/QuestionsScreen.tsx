@@ -149,7 +149,7 @@ const QuestionsStartScreen = ({}: Props) => {
         }}
       >
         <AppText>{pages[currentPage].question}</AppText>
-        <View style={{ padding: 15 }}>
+        <View style={{ paddingVertical: 10 }}>
           {pages[currentPage].buttons.map((button, index) => (
             <AppButton
               key={`pageButton${index}`}
@@ -162,6 +162,7 @@ const QuestionsStartScreen = ({}: Props) => {
                 }
               }}
               style={{
+                marginHorizontal: 0,
                 borderColor: colors.border,
                 borderRadius: 10,
                 borderWidth: 1,

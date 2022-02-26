@@ -39,7 +39,10 @@ const AppButton = ({
         backgroundColor: disabled ? colors.gray : backgroundColor,
         ...(style as ViewStyle),
         overflow: 'hidden',
-        padding: 0,
+        paddingBottom: 0,
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingTop: 0,
       }}
     >
       <Pressable
@@ -53,7 +56,10 @@ const AppButton = ({
           padding: 15,
           ...(style as ViewStyle),
           borderWidth: 0,
-          margin: 0,
+          marginBottom: 0,
+          marginLeft: 0,
+          marginRight: 0,
+          marginTop: 0,
         }}
         {...props}
       >
