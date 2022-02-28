@@ -8,9 +8,9 @@ import { useSelector } from 'react-redux';
 import { themeSelector } from '../store/slices/user-slice';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
-import { AppButton, AppText } from '../components/global';
+import { AppButton } from '../components/global';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { QuestionsScreen } from '../screens';
+import { CreativeScreen, QuestionsScreen } from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -58,6 +58,11 @@ const AppNavigator = ({}) => {
           <Stack.Screen
             name='QuestionsStart'
             component={QuestionsScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='Creative'
+            component={CreativeScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

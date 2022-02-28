@@ -6139,6 +6139,11 @@ react-native-modal@^13.0.0:
     prop-types "^15.6.2"
     react-native-animatable "1.3.3"
 
+react-native-pan-pinch@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-pan-pinch/-/react-native-pan-pinch-1.0.1.tgz#132cbec4745f294caf0b5297e1a69af360898267"
+  integrity sha512-bfycicOeEM2py3cxMfN6s57ierE9QwB/ILcSsF+YibyPHZ2TZ1PGRka0+BYgaMBsZsHaTOo3WU+tO9yJWYWEUw==
+
 react-native-reanimated@~2.3.1:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-2.3.2.tgz#3b132db186dac04a5ed710f5e4ed5733c89020c5"

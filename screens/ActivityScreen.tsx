@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  ScrollView,
-  ImageBackground,
-  View,
-} from 'react-native';
+import { StyleSheet, ScrollView, ImageBackground, View } from 'react-native';
 import Notification from '../components/center/Notification';
 import Header from '../components/Header';
 import { LinearGradient } from 'expo-linear-gradient';

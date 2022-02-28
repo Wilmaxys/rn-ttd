@@ -1,6 +1,7 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { ReactNode, useCallback, useContext } from 'react';
 import {
+  Dimensions,
   ImageRequireSource,
   ImageURISource,
   View,
@@ -9,12 +10,12 @@ import {
 import Carousel from 'react-native-snap-carousel';
 import { useSelector } from 'react-redux';
 import EditListModule from './EditListModule';
-import { width } from '../../constants';
 import { themeSelector } from '../../store/slices/user-slice';
 import { BaseModule } from '../../types';
 import { AppCard, AppText, AppButton } from '../global';
 import { ModalContext } from '../modal';
 import EditTrackerModule from './EditTrackerModule';
+import { moderateScale } from '../../constants';
 
 type ModuleSelectorItem = BaseModule & {
   component: () => ReactNode;
@@ -63,7 +64,7 @@ const SelectNewModule = ({ style = {} }: Props) => {
       <View style={{ paddingBottom: 15 }}>
         <Carousel
           data={modules}
-          itemWidth={width - 150}
+          itemWidth={Dimensions.get('window').width - moderateScale(150)}
           loop
           renderItem={({ item: module }) => (
             <AppCard
@@ -83,7 +84,7 @@ const SelectNewModule = ({ style = {} }: Props) => {
               <AppText>{module.description}</AppText>
             </AppCard>
           )}
-          sliderWidth={width - 6}
+          sliderWidth={Dimensions.get('window').width - 6}
         />
       </View>
     );
