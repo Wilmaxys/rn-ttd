@@ -156,7 +156,6 @@ const CreativeScreen = ({}: Props) => {
         >
           <AppText type='title'>Création</AppText>
           <AppButton
-            onPress={() => navigation.navigate('Home')}
             variant='secondary'
             style={{
               padding: 5,
