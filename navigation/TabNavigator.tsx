@@ -1,15 +1,20 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useSelector } from 'react-redux';
-import { ActivityScreen, ModulesScreen, ProfileScreen } from '../screens';
-import { Ionicons } from '@expo/vector-icons';
+import {
+  ActivityScreen,
+  CreativeScreen,
+  ModulesScreen,
+  ProfileScreen,
+} from '../screens';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { themeSelector } from '../store/slices/user-slice';
 
 type Screen = {
   key: string;
   component: ({}) => JSX.Element;
   displayName: string;
-  icon: 'apps' | 'browsers' | 'body-sharp';
+  icon: 'apps' | 'window-maximize' | 'account' | 'palette-outline';
 };
 
 const Tab = createBottomTabNavigator();
@@ -28,13 +33,19 @@ const TabNavigator = ({}) => {
       key: 'Module',
       component: ModulesScreen,
       displayName: 'Modules',
-      icon: 'browsers',
+      icon: 'window-maximize',
+    },
+    {
+      key: 'Creative',
+      component: CreativeScreen,
+      displayName: 'Créatif',
+      icon: 'palette-outline',
     },
     {
       key: 'Profile',
       component: ProfileScreen,
       displayName: 'Profil',
-      icon: 'body-sharp',
+      icon: 'account',
     },
   ];
 
@@ -63,7 +74,11 @@ const TabNavigator = ({}) => {
           options={{
             tabBarLabel: screen.displayName,
             tabBarIcon: ({ color, size }) => (
-              <Ionicons name={screen.icon} color={color} size={size} />
+              <MaterialCommunityIcons
+                name={screen.icon}
+                color={color}
+                size={size}
+              />
             ),
           }}
         />

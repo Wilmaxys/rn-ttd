@@ -124,7 +124,7 @@ const Notification = ({ brown = false }) => {
             <Text style={styles.cardVectorText}>
               <Ionicons
                 name='alarm-outline'
-                color={colors.secondaryLight}
+                color={colors.background}
                 size={36}
               />
             </Text>
@@ -136,9 +136,7 @@ const Notification = ({ brown = false }) => {
             <Text style={styles.hourText}>13:42</Text>
           </View>
           <View style={styles.cardContentBottom}>
-            <View
-              style={{ ...styles.tag, backgroundColor: colors.secondaryLight }}
-            >
+            <View style={{ ...styles.tag, backgroundColor: colors.background }}>
               <Text style={{ ...styles.tagText, color: colors.text }}>
                 test
               </Text>

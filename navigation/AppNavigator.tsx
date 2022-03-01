@@ -10,7 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
 import { AppButton } from '../components/global';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { CreativeScreen, QuestionsScreen } from '../screens';
+import { QuestionsScreen } from '../screens';
 
 const Stack = createStackNavigator();
 
@@ -58,11 +58,6 @@ const AppNavigator = ({}) => {
           <Stack.Screen
             name='QuestionsStart'
             component={QuestionsScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name='Creative'
-            component={CreativeScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "rn-ttd",
+    "name": "TimeToDoux",
     "slug": "rn-ttd",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -25,9 +25,6 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.timetodoux.ttd"
-    },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
     }
   }
 }

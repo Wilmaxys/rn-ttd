@@ -1,34 +1,26 @@
-const defaultColors = {
-  darkGreen: '#779780',
-  lightGreen: '#B8D2C5',
-
-  darkOrange: '#926953',
-  lightOrange: '#EAE2D5',
-
-  warning: '#F1FA8C',
-  danger: '#FF6E67',
-
-  black: '#282A36',
-  gray: '#C4C4C4',
-  white: '#FFFFFF',
-  transparent: 'transparent',
-};
-
 const defaultTheme = {
   dark: false,
   activeOpacity: 0.7,
   colors: {
-    ...defaultColors,
-    primary: defaultColors.darkGreen,
-    primaryLight: defaultColors.lightGreen,
-    secondary: defaultColors.darkOrange,
-    secondaryLight: defaultColors.lightOrange,
-    background: defaultColors.lightOrange,
-    card: defaultColors.white,
-    text: defaultColors.black,
-    border: defaultColors.gray,
-    notification: defaultColors.white,
+    transparent: 'transparent',
+    black: '#202F26',
+    gray: '#C4C4C4',
+    white: '#F8F8F8',
+
+    primary: '#779780',
+    primaryDark: '#5F7966',
+    primaryLight: '#B8D2C5',
+    secondary: '#926953',
+    secondaryDark: '#87573D',
+    secondaryLight: '#A5806C',
+    warning: '#F1FA8C',
+    danger: '#FF6E67',
+    background: '#EAE2D5',
+    card: '#F8F8F8',
+    text: '#202F26',
+    border: '#C4C4C4',
+    notification: '#B8D2C5',
   },
 };
 
-export { defaultTheme, defaultColors };
+export { defaultTheme };

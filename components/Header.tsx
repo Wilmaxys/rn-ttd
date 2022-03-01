@@ -3,15 +3,12 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../store/slices/user-slice';
 import { AppButton, AppText } from './global';
-import { useNavigation } from '@react-navigation/native';
 
 type Props = {
   title: string;
 };
 
 const Header = ({ title = '' }: Props) => {
-  const navigation = useNavigation();
-
   const { colors } = useSelector(themeSelector);
 
   const styles = StyleSheet.create({
@@ -38,7 +35,6 @@ const Header = ({ title = '' }: Props) => {
         <AppText type='title'>{title}</AppText>
         <View style={styles.headerVectorContainer}>
           <AppButton
-            onPress={() => navigation.navigate('Creative')}
             variant='secondary'
             style={{
               padding: 5,
@@ -47,7 +43,6 @@ const Header = ({ title = '' }: Props) => {
             <MaterialCommunityIcons name='menu' size={30} color={colors.text} />
           </AppButton>
           <AppButton
-            onPress={() => navigation.navigate('Creative')}
             variant='secondary'
             style={{
               padding: 5,

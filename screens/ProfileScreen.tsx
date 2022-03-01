@@ -1,5 +1,5 @@
 import { View, StyleSheet, Image, Text } from 'react-native';
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Notification from '../components/profil/Notification';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../store/slices/user-slice';
@@ -18,7 +18,7 @@ const ProfileScreen = ({}) => {
     top: {
       width: '100%',
       height: 170,
-      backgroundColor: colors.secondaryLight,
+      backgroundColor: colors.background,
       marginBottom: 40,
     },
     image: {
@@ -58,7 +58,7 @@ const ProfileScreen = ({}) => {
       marginBottom: 10,
     },
     bottomTabs: {
-      backgroundColor: colors.secondaryLight,
+      backgroundColor: colors.background,
       flexDirection: 'row',
       borderRadius: 3,
     },
@@ -73,7 +73,7 @@ const ProfileScreen = ({}) => {
       backgroundColor: colors.white,
     },
     bottomTabText: {
-      color: colors.secondaryLight,
+      color: colors.text,
       fontSize: 18,
     },
     bottomTabTextSelected: {

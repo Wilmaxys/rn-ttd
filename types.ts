@@ -1,6 +1,18 @@
 import { ReactNode } from 'react';
 import { ImageRequireSource, ImageURISource } from 'react-native';
 
+export type CreativeItem = {
+  id?: string;
+  type: 'image' | 'module' | 'shape';
+  x: number;
+  y: number;
+  z: number;
+  height: number;
+  width: number;
+  rotation: string;
+  value: string;
+};
+
 export type ModalComponent = {
   title: string;
   body: () => ReactNode;

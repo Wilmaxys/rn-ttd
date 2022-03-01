@@ -8,7 +8,7 @@ const Notification = ({}) => {
 
   const styles = StyleSheet.create({
     cardNotif: {
-      backgroundColor: colors.secondaryLight,
+      backgroundColor: colors.background,
       paddingVertical: 10,
       paddingHorizontal: 10,
       marginHorizontal: 5,
@@ -19,7 +19,7 @@ const Notification = ({}) => {
       alignItems: 'center',
     },
     cardNotifTopVector: {
-      backgroundColor: colors.secondaryLight,
+      backgroundColor: colors.background,
       borderRadius: 2,
       padding: 5,
     },

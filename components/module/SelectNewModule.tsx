@@ -1,9 +1,9 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { ReactNode, useCallback, useContext } from 'react';
 import {
-  Dimensions,
   ImageRequireSource,
   ImageURISource,
+  useWindowDimensions,
   View,
   ViewStyle,
 } from 'react-native';
@@ -58,13 +58,14 @@ const SelectNewModule = ({ style = {} }: Props) => {
   const { colors } = useSelector(themeSelector);
 
   const { showModal, setModalOptions } = useContext(ModalContext);
+  const { height, width } = useWindowDimensions();
 
   const _renderModalBody = useCallback(() => {
     return (
       <View style={{ paddingBottom: 15 }}>
         <Carousel
           data={modules}
-          itemWidth={Dimensions.get('window').width - moderateScale(150)}
+          itemWidth={width - moderateScale(150)}
           loop
           renderItem={({ item: module }) => (
             <AppCard
@@ -84,7 +85,7 @@ const SelectNewModule = ({ style = {} }: Props) => {
               <AppText>{module.description}</AppText>
             </AppCard>
           )}
-          sliderWidth={Dimensions.get('window').width - 6}
+          sliderWidth={width - 6}
         />
       </View>
     );

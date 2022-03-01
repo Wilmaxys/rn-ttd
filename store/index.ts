@@ -14,7 +14,8 @@ import rootSlice from './slices';
 
 const persistConfig = {
   key: 'root',
-  whitelist: ['module'],
+  // whitelist: ['module'],
+  whitelist: ['module', 'creative'],
   storage: ExpoFileSystemStorage,
 };
 

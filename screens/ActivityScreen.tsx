@@ -73,7 +73,7 @@ const ActivityScreen = ({}) => {
     image: {
       flex: 1,
       width: '100%',
-      backgroundColor: colors.secondaryLight,
+      backgroundColor: colors.background,
     },
   });
 
@@ -124,7 +124,7 @@ const ActivityScreen = ({}) => {
           })}
       </ScrollView>
       <LinearGradient
-        colors={['transparent', colors.secondaryLight]}
+        colors={['transparent', colors.background]}
         start={[0.5, 0.15]}
         end={[0.5, 0.4]}
         style={styles.footer}

@@ -1,11 +1,23 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import React, { ReactNode, useState } from 'react';
-import { FlatList, Image, ImageBackground, View } from 'react-native';
+import React, { ReactNode, useCallback, useState } from 'react';
+import {
+  FlatList,
+  Image,
+  ImageBackground,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { CreativeItem } from '../components/creative';
 import { AppButton, AppCard, AppText } from '../components/global';
 import { moderateScale } from '../constants';
+import {
+  addCreativeItem,
+  creativeItemsSelector,
+  lowestCreativeItemZIndexSelector,
+} from '../store/slices/creative-slice';
 import { modulesSelector } from '../store/slices/module-slice';
 import { themeSelector } from '../store/slices/user-slice';
 
@@ -16,14 +28,37 @@ type Tab = {
 type Props = {};
 
 const CreativeScreen = ({}: Props) => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const { colors } = useSelector(themeSelector);
 
   const modules = useSelector(modulesSelector);
+  const creativeItems = useSelector(creativeItemsSelector);
+  const lowestZ = useSelector(lowestCreativeItemZIndexSelector);
 
   const [currentTab, setCurrentTab] = useState(0);
   const [tabOpen, setTabOpen] = useState(true);
+
+  const { height, width } = useWindowDimensions();
+
+  const addItem = useCallback(
+    (value: string, type: 'image' | 'module' | 'shape') => {
+      dispatch(
+        addCreativeItem({
+          value,
+          type,
+          x: 0,
+          y: 0,
+          z: lowestZ,
+          height: moderateScale(150),
+          width: moderateScale(200),
+          rotation: '0deg',
+        })
+      );
+    },
+    [width, height, lowestZ]
+  );
 
   const tabs: Tab[] = [
     {
@@ -41,8 +76,9 @@ const CreativeScreen = ({}: Props) => {
         'https://images.unsplash.com/photo-1517328894681-0f5dfabd463c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80',
         'https://images.unsplash.com/photo-1612981453053-184fd648b66b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1413&q=80',
         'https://images.unsplash.com/photo-1609154767012-331529e7d73b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=671&q=80',
+        'https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80',
       ].map((uri) => (
-        <AppCard style={{ padding: 0 }}>
+        <AppCard onPress={() => addItem(uri, 'image')} style={{ padding: 0 }}>
           <Image
             source={{ uri }}
             style={{ width: moderateScale(75), height: moderateScale(50) }}
@@ -100,6 +136,8 @@ const CreativeScreen = ({}: Props) => {
       )),
     },
   ];
+
+  const [focusedItemId, setFocusedItemId] = useState('');
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -178,25 +216,35 @@ const CreativeScreen = ({}: Props) => {
             data={tabs[currentTab].items}
             renderItem={({ item }) => <View>{item}</View>}
             horizontal
+            contentContainerStyle={{
+              minHeight: moderateScale(60),
+              alignItems: 'center',
+            }}
           />
         )}
       </View>
 
-      <View
-        style={{ position: 'relative', backgroundColor: colors.white, flex: 1 }}
+      <ImageBackground
+        source={require('../assets/images/creative/dots.png')}
+        style={{
+          position: 'relative',
+          backgroundColor: colors.white,
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
+        }}
+        resizeMode='repeat'
       >
-        <ImageBackground
-          source={require('../assets/images/creative/dots.png')}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            height: '100%',
-            width: '100%',
-          }}
-          resizeMode='repeat'
-        ></ImageBackground>
-      </View>
+        {creativeItems.map(({ id = '' }, index) => (
+          <CreativeItem
+            key={`creativeItem${index}`}
+            id={id}
+            focused={id === focusedItemId}
+            onPress={() => setFocusedItemId(id)}
+          />
+        ))}
+      </ImageBackground>
     </SafeAreaView>
   );
 };

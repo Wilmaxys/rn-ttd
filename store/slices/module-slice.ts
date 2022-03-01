@@ -32,8 +32,8 @@ const moduleSlice = createSlice({
         lastUsedAt: new Date().toISOString(),
       });
     },
-    removeModule(state, { payload }: PayloadAction<Module | number>) {
-      const id = typeof payload === 'number' ? payload : payload.id;
+    removeModule(state, { payload }: PayloadAction<Module | string>) {
+      const id = typeof payload === 'string' ? payload : payload.id;
 
       if (!id) return;
 
