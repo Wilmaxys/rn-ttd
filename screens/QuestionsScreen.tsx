@@ -2,7 +2,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Image, ImageRequireSource, ImageURISource, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { AppButton, AppText } from '../components/global';
 import { themeSelector } from '../store/slices/user-slice';
@@ -76,7 +75,7 @@ const QuestionsStartScreen = ({}: Props) => {
   const [currentPage, setCurrentPage] = useState(0);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <View
         style={{
           position: 'relative',
@@ -182,7 +181,7 @@ const QuestionsStartScreen = ({}: Props) => {
           ))}
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

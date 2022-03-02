@@ -13,9 +13,8 @@ const Header = ({ title = '' }: Props) => {
 
   const styles = StyleSheet.create({
     header: {
-      paddingHorizontal: 20,
+      padding: 15,
       width: '100%',
-      height: 80,
       justifyContent: 'flex-end',
     },
     headerContent: {

@@ -8,7 +8,6 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import { CreativeItem } from '../components/creative';
 import { AppButton, AppCard, AppText } from '../components/global';
@@ -140,7 +139,7 @@ const CreativeScreen = ({}: Props) => {
   const [focusedItemId, setFocusedItemId] = useState('');
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <View
         style={{
           padding: 15,
@@ -244,7 +243,7 @@ const CreativeScreen = ({}: Props) => {
           />
         ))}
       </ImageBackground>
-    </SafeAreaView>
+    </View>
   );
 };
 

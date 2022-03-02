@@ -3,7 +3,6 @@ import {
   NavigationContainer,
 } from '@react-navigation/native';
 import React from 'react';
-import { View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../store/slices/user-slice';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -11,6 +10,7 @@ import TabNavigator from './TabNavigator';
 import { AppButton } from '../components/global';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { QuestionsScreen } from '../screens';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
 
@@ -19,7 +19,7 @@ const AppNavigator = ({}) => {
   const { colors } = theme;
   ``;
   return (
-    <View style={{ flex: 1, backgroundColor: colors.background }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <NavigationContainer theme={theme}>
         <Stack.Navigator
           screenOptions={({ navigation, route }) => ({
@@ -62,7 +62,7 @@ const AppNavigator = ({}) => {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </View>
+    </SafeAreaView>
   );
 };
 

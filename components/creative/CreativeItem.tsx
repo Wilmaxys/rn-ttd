@@ -1,13 +1,6 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React, { useCallback, useRef, useState } from 'react';
-import {
-  Animated,
-  Image,
-  LayoutChangeEvent,
-  PanResponder,
-  StyleSheet,
-  View,
-} from 'react-native';
+import React, { useCallback, useRef } from 'react';
+import { Animated, Image, LayoutChangeEvent, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { DragResizeBlock } from 'react-native-drag-resize';
 import {
@@ -74,7 +67,7 @@ const CreativeItem = ({ id, focused = false, onPress = () => {} }: Props) => {
       connectors={focused ? ['mr', 'br', 'bm', 'c'] : []}
       onDragStart={() => {
         Animated.spring(scale, {
-          toValue: 1.1,
+          toValue: 1.05,
           friction: 3,
           useNativeDriver: false,
         }).start();

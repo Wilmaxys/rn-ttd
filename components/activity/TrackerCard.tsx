@@ -74,7 +74,7 @@ const TrackerCard = ({ module, date, value }: Props) => {
     <AppCard
       style={{
         marginHorizontal: 0,
-        paddingHorizontal: 3,
+        paddingHorizontal: 10,
         flex: 1,
         flexDirection: 'row',
       }}
@@ -89,7 +89,7 @@ const TrackerCard = ({ module, date, value }: Props) => {
         }}
       >
         <MaterialCommunityIcons
-          color={colors.white}
+          color={colors.background}
           name='emoticon-happy-outline'
           size={35}
         />

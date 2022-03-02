@@ -9,11 +9,15 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { AppNavigator } from './navigation';
 import { Loader } from './components/global';
 import { ModalProvider } from './components/modal';
+import moment from 'moment';
+import 'moment/locale/fr';
 
 const loadResourcesAsync = async (): Promise<void> => {
+  moment.locale('fr');
   return await Font.loadAsync({
-    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
-    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+    'montserrat-bold': require('./assets/fonts/Montserrat-Bold.ttf'),
+    'montserrat-italic': require('./assets/fonts/Montserrat-Italic.ttf'),
+    montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
   });
 };
 

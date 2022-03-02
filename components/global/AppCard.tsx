@@ -40,7 +40,10 @@ const AppCard = ({
         backgroundColor: colors.card,
         overflow: 'hidden',
         ...(style as ViewStyle),
-        padding: 0,
+        paddingBottom: 0,
+        paddingLeft: 0,
+        paddingRight: 0,
+        paddingTop: 0,
       }}
       {...props}
     >
@@ -65,8 +68,12 @@ const AppCard = ({
         style={{
           padding: 15,
           ...(style as ViewStyle),
-          margin: 0,
+          marginBottom: 0,
+          marginLeft: 0,
+          marginRight: 0,
+          marginTop: 0,
           borderWidth: 0,
+          elevation: 0,
         }}
       >
         {title !== undefined && <AppText type='title'>{title}</AppText>}

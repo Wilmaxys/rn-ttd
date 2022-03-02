@@ -1,10 +1,12 @@
-import { View, StyleSheet, Image, Text } from 'react-native';
+import { View, StyleSheet, Image, Text, ScrollView } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Notification from '../components/profil/Notification';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../store/slices/user-slice';
 import { useNavigation } from '@react-navigation/native';
-import { AppButton } from '../components/global';
+import { AppButton, AppCard } from '../components/global';
+import { LineChart, PieChart, ProgressChart } from '../components/charts';
+import { moderateScale } from '../constants';
 
 const ProfileScreen = ({}) => {
   const { colors } = useSelector(themeSelector);
@@ -82,7 +84,7 @@ const ProfileScreen = ({}) => {
   });
 
   return (
-    <View style={styles.screen}>
+    <ScrollView style={styles.screen}>
       <View style={styles.top}>
         <View style={styles.imageContainer}>
           <Image
@@ -131,7 +133,50 @@ const ProfileScreen = ({}) => {
           </View>
         </View>
       </View>
-    </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+        }}
+      >
+        <AppCard
+          title='Objectifs'
+          style={{
+            marginHorizontal: 20,
+            marginTop: 20,
+            flex: 1,
+            flexBasis: moderateScale(200),
+            elevation: 2,
+          }}
+        >
+          <PieChart />
+        </AppCard>
+        <AppCard
+          title='Favoris'
+          style={{
+            marginHorizontal: 20,
+            marginTop: 20,
+            flex: 1,
+            flexBasis: moderateScale(200),
+            elevation: 2,
+          }}
+        >
+          <ProgressChart />
+        </AppCard>
+        <AppCard
+          title='Estimations'
+          style={{
+            marginHorizontal: 20,
+            marginTop: 20,
+            flex: 1,
+            flexBasis: moderateScale(500),
+            elevation: 2,
+          }}
+        >
+          <LineChart />
+        </AppCard>
+      </View>
+    </ScrollView>
   );
 };
 

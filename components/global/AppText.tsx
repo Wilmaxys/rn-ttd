@@ -13,7 +13,7 @@ const AppText = ({ children = '', style = {}, type = 'default' }: Props) => {
   const { colors } = useSelector(themeSelector);
 
   const defaultStyle: TextStyle = {
-    fontFamily: 'open-sans',
+    fontFamily: 'montserrat',
     color: colors.text,
     fontSize: 14,
   };
