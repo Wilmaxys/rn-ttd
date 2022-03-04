@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useCallback } from 'react';
 import {
   Image,
   ImageRequireSource,
@@ -8,9 +8,10 @@ import {
   ViewStyle,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-import AppText from './AppText';
+import AppText, { AppTextProps } from './AppText';
 import AppButton from './inputs/AppButton';
 import { themeSelector } from '../../store/slices/user-slice';
+import { LinearGradient } from 'expo-linear-gradient';
 
 type Props = ViewProps & {
   children?: ReactNode;
@@ -18,6 +19,8 @@ type Props = ViewProps & {
   imageSource?: ImageRequireSource | ImageURISource;
   onPress?: () => void;
   title?: string;
+  titleProps?: AppTextProps;
+  gradientColors?: string[];
 };
 
 const AppCard = ({
@@ -27,9 +30,36 @@ const AppCard = ({
   onPress,
   style = {},
   title,
+  titleProps = {},
+  gradientColors,
   ...props
 }: Props) => {
   const { colors } = useSelector(themeSelector);
+
+  const _renderChildren = useCallback(() => {
+    return (
+      <View
+        style={{
+          padding: 15,
+          ...(style as ViewStyle),
+          backgroundColor: colors.transparent,
+          marginBottom: 0,
+          marginLeft: 0,
+          marginRight: 0,
+          marginTop: 0,
+          borderWidth: 0,
+          elevation: 0,
+        }}
+      >
+        {title !== undefined && (
+          <AppText type='title' {...titleProps}>
+            {title}
+          </AppText>
+        )}
+        {children}
+      </View>
+    );
+  }, []);
 
   return (
     <AppButton
@@ -64,21 +94,13 @@ const AppCard = ({
           />
         </View>
       )}
-      <View
-        style={{
-          padding: 15,
-          ...(style as ViewStyle),
-          marginBottom: 0,
-          marginLeft: 0,
-          marginRight: 0,
-          marginTop: 0,
-          borderWidth: 0,
-          elevation: 0,
-        }}
-      >
-        {title !== undefined && <AppText type='title'>{title}</AppText>}
-        {children}
-      </View>
+      {gradientColors !== undefined ? (
+        <LinearGradient colors={gradientColors} start={[0, 0.5]} end={[2, 0.5]}>
+          {_renderChildren()}
+        </LinearGradient>
+      ) : (
+        _renderChildren()
+      )}
     </AppButton>
   );
 };

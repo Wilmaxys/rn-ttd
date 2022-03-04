@@ -15,12 +15,11 @@ const ProfileScreen = ({}) => {
   const styles = StyleSheet.create({
     screen: {
       flexGrow: 1,
-      backgroundColor: colors.white,
     },
     top: {
       width: '100%',
       height: 170,
-      backgroundColor: colors.background,
+      backgroundColor: colors.white,
       marginBottom: 40,
     },
     image: {
@@ -33,7 +32,7 @@ const ProfileScreen = ({}) => {
       left: 15,
       borderRadius: 12,
       borderWidth: 3,
-      borderColor: colors.white,
+      borderColor: colors.background,
       width: 150,
       height: 150,
       overflow: 'hidden',
@@ -60,7 +59,7 @@ const ProfileScreen = ({}) => {
       marginBottom: 10,
     },
     bottomTabs: {
-      backgroundColor: colors.background,
+      backgroundColor: colors.white,
       flexDirection: 'row',
       borderRadius: 3,
     },
@@ -72,7 +71,7 @@ const ProfileScreen = ({}) => {
       borderRadius: 3,
     },
     bottomTabSelected: {
-      backgroundColor: colors.white,
+      backgroundColor: colors.background,
     },
     bottomTabText: {
       color: colors.text,
@@ -148,6 +147,7 @@ const ProfileScreen = ({}) => {
             flexBasis: moderateScale(200),
             elevation: 2,
           }}
+          gradientColors={[colors.primaryDark, colors.primaryLight]}
         >
           <PieChart />
         </AppCard>

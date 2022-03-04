@@ -24,16 +24,6 @@ const PieChart = ({}: Props) => {
       amount: 40,
       svg: { fill: colors.primaryDark },
     },
-    {
-      key: 4,
-      amount: 95,
-      svg: { fill: colors.secondary },
-    },
-    {
-      key: 5,
-      amount: 35,
-      svg: { fill: colors.secondaryLight },
-    },
   ];
 
   const Labels = ({ slices, height, width }) => {

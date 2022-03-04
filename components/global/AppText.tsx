@@ -41,4 +41,5 @@ const AppText = ({ children = '', style = {}, type = 'default' }: Props) => {
   return <Text style={{ ...defaultStyle, ...style }}>{children}</Text>;
 };
 
+export type AppTextProps = Props;
 export default AppText;

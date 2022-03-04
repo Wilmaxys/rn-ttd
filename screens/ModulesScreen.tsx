@@ -97,8 +97,14 @@ const ModulesScreen = ({}) => {
             </View>
           )}
           {oldModules.length > 0 && (
-            <View>
-              <AppText type='subtitle'>Modules</AppText>
+            <View
+              style={{
+                marginTop: 15,
+                borderColor: colors.border,
+                borderTopWidth: 1,
+                paddingTop: 15,
+              }}
+            >
               <View
                 onStartShouldSetResponder={() => true}
                 style={styles.cardContainer}

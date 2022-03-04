@@ -56,6 +56,56 @@ const themes: (typeof defaultTheme & { label: string })[] = [
       notification: '#F8F8F8',
     },
   },
+  {
+    label: 'Orange',
+    dark: false,
+    activeOpacity: 0.7,
+    colors: {
+      transparent: 'transparent',
+      black: '#3A1500',
+      gray: '#C4C4C4',
+      white: '#F8F8F8',
+
+      primary: '#F38B0A',
+      primaryDark: '#E4582C',
+      primaryLight: '#FAA325',
+      secondary: '#9470B5',
+      secondaryDark: '#312F6E',
+      secondaryLight: '#E0BBE6',
+      warning: '#F1FA8C',
+      danger: '#FF6E67',
+      background: '#F8EDEB',
+      card: '#F8F8F8',
+      text: '#3A1500',
+      border: '#C4C4C4',
+      notification: '#B8D2C5',
+    },
+  },
+  {
+    label: 'Canard',
+    dark: false,
+    activeOpacity: 0.7,
+    colors: {
+      transparent: 'transparent',
+      black: '#39210B',
+      gray: '#C4C4C4',
+      white: '#F8F8F8',
+
+      primary: '#C98C55',
+      primaryDark: '#A16229',
+      primaryLight: '#E5AF80',
+      secondary: '#28685F',
+      secondaryDark: '#134039',
+      secondaryLight: '#65867D',
+      warning: '#F1FA8C',
+      danger: '#FF6E67',
+      background: '#EEE8E3',
+      card: '#F8F8F8',
+      text: '#39210B',
+      border: '#C4C4C4',
+      notification: '#B8D2C5',
+    },
+  },
 ];
 
 type Props = {};
@@ -69,13 +119,15 @@ const ThemeScreen = ({}: Props) => {
     <>
       <View
         style={{
+          padding: 30,
           flex: 1,
-          alignItems: 'center',
+          alignItems: 'stretch',
           justifyContent: 'center',
         }}
       >
-        {themes.map((theme) => (
+        {themes.map((theme, index) => (
           <AppButton
+            key={`themeButton${index}`}
             text={theme.label}
             onPress={() => dispatch(setTheme(theme))}
             style={{ backgroundColor: theme.colors.primary }}
