@@ -6,9 +6,10 @@ import { AppButton, AppText } from './global';
 
 type Props = {
   title: string;
+  onPress: () => void;
 };
 
-const Header = ({ title = '' }: Props) => {
+const Header = ({ title = '', onPress = () => {} }: Props) => {
   const { colors } = useSelector(themeSelector);
 
   const styles = StyleSheet.create({
@@ -38,6 +39,7 @@ const Header = ({ title = '' }: Props) => {
             style={{
               padding: 5,
             }}
+            onPress={onPress}
           >
             <MaterialCommunityIcons name='menu' size={30} color={colors.text} />
           </AppButton>
@@ -46,6 +48,7 @@ const Header = ({ title = '' }: Props) => {
             style={{
               padding: 5,
             }}
+            onPress={onPress}
           >
             <MaterialCommunityIcons name='apps' size={30} color={colors.text} />
           </AppButton>

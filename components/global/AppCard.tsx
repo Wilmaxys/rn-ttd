@@ -1,14 +1,15 @@
-import React, { ReactNode, useCallback } from 'react';
+import React, { ReactNode } from 'react';
 import {
   Image,
   ImageRequireSource,
   ImageURISource,
+  TextStyle,
   View,
   ViewProps,
   ViewStyle,
 } from 'react-native';
 import { useSelector } from 'react-redux';
-import AppText, { AppTextProps } from './AppText';
+import AppText from './AppText';
 import AppButton from './inputs/AppButton';
 import { themeSelector } from '../../store/slices/user-slice';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -19,7 +20,7 @@ type Props = ViewProps & {
   imageSource?: ImageRequireSource | ImageURISource;
   onPress?: () => void;
   title?: string;
-  titleProps?: AppTextProps;
+  titleStyle?: TextStyle;
   gradientColors?: string[];
 };
 
@@ -30,13 +31,13 @@ const AppCard = ({
   onPress,
   style = {},
   title,
-  titleProps = {},
+  titleStyle = {},
   gradientColors,
   ...props
 }: Props) => {
   const { colors } = useSelector(themeSelector);
 
-  const _renderChildren = useCallback(() => {
+  const _renderChildren = () => {
     return (
       <View
         style={{
@@ -52,14 +53,14 @@ const AppCard = ({
         }}
       >
         {title !== undefined && (
-          <AppText type='title' {...titleProps}>
+          <AppText type='title' style={titleStyle}>
             {title}
           </AppText>
         )}
         {children}
       </View>
     );
-  }, []);
+  };
 
   return (
     <AppButton

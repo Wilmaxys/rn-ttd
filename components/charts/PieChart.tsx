@@ -12,17 +12,17 @@ const PieChart = ({}: Props) => {
     {
       key: 1,
       amount: 50,
-      svg: { fill: colors.primaryLight },
+      svg: { fill: colors.secondaryLight },
     },
     {
       key: 2,
       amount: 50,
-      svg: { fill: colors.primary },
+      svg: { fill: colors.secondary },
     },
     {
       key: 3,
       amount: 40,
-      svg: { fill: colors.primaryDark },
+      svg: { fill: colors.secondaryDark },
     },
   ];
 

@@ -1,5 +1,5 @@
 import Loader from './Loader';
-import AppText, { AppTextProps } from './AppText';
+import AppText from './AppText';
 import AppCard from './AppCard';
 
 import FormInput from './inputs/FormInput';
@@ -11,7 +11,6 @@ import AppCheckBox from './inputs/AppCheckbox';
 export {
   Loader,
   AppText,
-  AppTextProps,
   AppCard,
   FormInput,
   AppTextInput,

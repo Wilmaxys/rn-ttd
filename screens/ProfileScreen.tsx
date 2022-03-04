@@ -1,6 +1,5 @@
 import { View, StyleSheet, Image, Text, ScrollView } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import Notification from '../components/profil/Notification';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../store/slices/user-slice';
 import { useNavigation } from '@react-navigation/native';
@@ -51,35 +50,6 @@ const ProfileScreen = ({}) => {
     name: {
       fontSize: 18,
     },
-    bottom: {
-      marginHorizontal: 20,
-    },
-    bottomNotif: {
-      flexDirection: 'row',
-      marginBottom: 10,
-    },
-    bottomTabs: {
-      backgroundColor: colors.white,
-      flexDirection: 'row',
-      borderRadius: 3,
-    },
-    bottomTab: {
-      flex: 1,
-      margin: 2,
-      alignItems: 'center',
-      paddingVertical: 10,
-      borderRadius: 3,
-    },
-    bottomTabSelected: {
-      backgroundColor: colors.background,
-    },
-    bottomTabText: {
-      color: colors.text,
-      fontSize: 18,
-    },
-    bottomTabTextSelected: {
-      color: colors.text,
-    },
   });
 
   return (
@@ -111,27 +81,6 @@ const ProfileScreen = ({}) => {
           </View>
         </View>
       </View>
-      <View style={styles.bottom}>
-        <View style={styles.bottomNotif}>
-          <Notification />
-          <Notification />
-        </View>
-        <View style={styles.bottomTabs}>
-          <View style={{ ...styles.bottomTab, ...styles.bottomTabSelected }}>
-            <Text
-              style={{
-                ...styles.bottomTabText,
-                ...styles.bottomTabTextSelected,
-              }}
-            >
-              Test
-            </Text>
-          </View>
-          <View style={styles.bottomTab}>
-            <Text style={styles.bottomTabText}>Test</Text>
-          </View>
-        </View>
-      </View>
       <View
         style={{
           flexDirection: 'row',
@@ -147,7 +96,6 @@ const ProfileScreen = ({}) => {
             flexBasis: moderateScale(200),
             elevation: 2,
           }}
-          gradientColors={[colors.primaryDark, colors.primaryLight]}
         >
           <PieChart />
         </AppCard>
