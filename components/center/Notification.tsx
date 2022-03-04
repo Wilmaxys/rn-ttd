@@ -105,7 +105,7 @@ const Notification = ({ brown = false }) => {
     >
       <View style={styles.card}>
         <View style={styles.cardStatus}>
-          <AppCheckBox checked={true} />
+          <AppCheckBox checked={false} />
         </View>
         <View style={styles.cardVector}>
           <ImageBackground

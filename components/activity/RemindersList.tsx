@@ -35,22 +35,22 @@ const CenterScreen = ({}) => {
 
   return (
     <ScrollView contentContainerStyle={styles.screen}>
-      <AppText type='subtitle' style={{ marginBottom: 5, marginTop: 15 }}>
-        Dans une semaine
+      <AppText type='subtitle' style={{ marginTop: 15 }}>
+        Aujourd'hui
       </AppText>
       <Notification />
       <Notification brown={true} />
-      <AppText type='subtitle' style={{ marginBottom: 5, marginTop: 15 }}>
+      <Notification brown={true} />
+      <AppText type='subtitle' style={{ marginTop: 15 }}>
         Demain
       </AppText>
       <Notification />
       <Notification brown={true} />
       <Notification />
-      <AppText type='subtitle' style={{ marginBottom: 5, marginTop: 15 }}>
-        Hier
+      <AppText type='subtitle' style={{ marginTop: 15 }}>
+        La semaine prochaine
       </AppText>
       <Notification />
-      <Notification brown={true} />
       <Notification brown={true} />
     </ScrollView>
   );

@@ -6,7 +6,7 @@ import { AppButton, AppText } from './global';
 
 type Props = {
   title: string;
-  onPress: () => void;
+  onPress?: () => void;
 };
 
 const Header = ({ title = '', onPress = () => {} }: Props) => {

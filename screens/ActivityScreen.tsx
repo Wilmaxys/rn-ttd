@@ -9,7 +9,7 @@ import { themeSelector } from '../store/slices/user-slice';
 const ActivityScreen = ({}) => {
   const { colors } = useSelector(themeSelector);
 
-  const [showTrackers, setShowTrackers] = useState(true);
+  const [showTrackers, setShowTrackers] = useState(false);
 
   const styles = StyleSheet.create({
     container: {
@@ -49,7 +49,10 @@ const ActivityScreen = ({}) => {
       }}
       style={styles.container}
     >
-      <Header title='Activités' />
+      <Header
+        title='Activités'
+        onPress={() => setShowTrackers(!showTrackers)}
+      />
       {showTrackers ? <TrackersList /> : <RemindersList />}
       <LinearGradient
         colors={['transparent', colors.background]}

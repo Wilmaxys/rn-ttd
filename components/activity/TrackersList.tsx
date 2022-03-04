@@ -1,5 +1,4 @@
 import { StyleSheet, ScrollView, View } from 'react-native';
-import Notification from '../center/Notification';
 import { useSelector } from 'react-redux';
 import { modulesSelector } from '../../store/slices/module-slice';
 import { TrackerModule } from '../../types';
@@ -62,7 +61,7 @@ const ActivityScreen = ({}) => {
           const displayDate = date.calendar(null, {
             sameDay: "[Aujourd'hui]",
             lastDay: '[Hier]',
-            sameElse: date.format('DD MMMM YYYY'),
+            sameElse: date.format('DD MMM YYYY'),
           });
 
           return (
@@ -81,8 +80,6 @@ const ActivityScreen = ({}) => {
                   value={value}
                 />
               ))}
-              <Notification />
-              <Notification brown={true} />
             </View>
           );
         })}
