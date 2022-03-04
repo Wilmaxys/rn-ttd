@@ -41,7 +41,7 @@ const LineChart = ({}: Props) => {
     <Path
       key={'line'}
       d={line}
-      stroke={'green'}
+      stroke={colors.primaryDark}
       fill={'none'}
       clipPath={'url(#clip-path-1)'}
     />
@@ -50,7 +50,7 @@ const LineChart = ({}: Props) => {
   const DashedLine = ({ line }) => (
     <Path
       key={'dashed-line'}
-      stroke={'green'}
+      stroke={colors.primaryDark}
       d={line}
       fill={'none'}
       clipPath={'url(#clip-path-2)'}
@@ -59,7 +59,7 @@ const LineChart = ({}: Props) => {
   );
   return (
     <AreaChart
-      style={{ height: 200 }}
+      style={{ marginTop: 10, height: 200 }}
       data={data}
       contentInset={{ top: 30, bottom: 30 }}
       svg={{

@@ -2,6 +2,7 @@ import { View, StyleSheet, Text, ImageBackground } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../../store/slices/user-slice';
+import { AppCheckBox } from '../global';
 
 const Notification = ({ brown = false }) => {
   const { colors } = useSelector(themeSelector);
@@ -25,7 +26,7 @@ const Notification = ({ brown = false }) => {
     },
 
     cardVectorText: {
-      color: 'white',
+      color: colors.white,
     },
     cardContent: {
       paddingLeft: 10,
@@ -57,15 +58,12 @@ const Notification = ({ brown = false }) => {
       color: colors.text,
     },
     cardStatus: {
-      backgroundColor: colors.primary,
       borderWidth: 4,
       borderColor: colors.white,
-      width: 30,
-      height: 30,
       borderRadius: 6,
       position: 'absolute',
-      top: -15,
-      right: 5,
+      top: -20,
+      right: 6,
       justifyContent: 'center',
       alignItems: 'center',
     },
@@ -73,9 +71,9 @@ const Notification = ({ brown = false }) => {
       color: colors.text,
     },
     image: {
-      marginTop: 20,
+      marginTop: 30,
       borderRadius: 10,
-      backgroundColor: 'white',
+      backgroundColor: colors.white,
       width: '100%',
     },
     image2: {
@@ -107,7 +105,7 @@ const Notification = ({ brown = false }) => {
     >
       <View style={styles.card}>
         <View style={styles.cardStatus}>
-          <Ionicons name='checkmark' size={16} color='white' />
+          <AppCheckBox checked={true} />
         </View>
         <View style={styles.cardVector}>
           <ImageBackground

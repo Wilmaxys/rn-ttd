@@ -59,7 +59,7 @@ const PieChart = ({}: Props) => {
 
   return (
     <SvgPieChart
-      style={{ height: 200 }}
+      style={{ marginTop: 10, height: 200 }}
       valueAccessor={({ item }) => item.amount}
       data={data}
       outerRadius={'95%'}

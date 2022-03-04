@@ -10,7 +10,7 @@ const ProgressChart = ({}: Props) => {
 
   return (
     <ProgressCircle
-      style={{ height: 200 }}
+      style={{ marginTop: 10, height: 200 }}
       progress={0.7}
       progressColor={colors.primary}
       startAngle={-Math.PI * 0.8}

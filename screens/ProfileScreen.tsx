@@ -169,7 +169,7 @@ const ProfileScreen = ({}) => {
             marginHorizontal: 20,
             marginTop: 20,
             flex: 1,
-            flexBasis: moderateScale(500),
+            flexBasis: moderateScale(300),
             elevation: 2,
           }}
         >

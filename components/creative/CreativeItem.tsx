@@ -31,7 +31,7 @@ const CreativeItem = ({ id, focused = false, onPress = () => {} }: Props) => {
   }
 
   const _renderItem = useCallback(() => {
-    switch (item?.type) {
+    switch (item.type) {
       case 'module': {
         break;
       }
@@ -87,7 +87,7 @@ const CreativeItem = ({ id, focused = false, onPress = () => {} }: Props) => {
           borderColor: colors.primary,
           borderRadius: 12,
           borderWidth: focused ? 4 : 0,
-          backgroundColor: colors.white,
+          backgroundColor: colors.transparent,
           padding: focused ? 4 : 0,
           transform: [{ scale }],
         }}
@@ -106,7 +106,12 @@ const CreativeItem = ({ id, focused = false, onPress = () => {} }: Props) => {
             dispatch(updateCreativeItem({ ...item, z: zindex }));
             onPress();
           }}
-          style={{ margin: 0, borderRadius: 10, padding: 0 }}
+          style={{
+            margin: 0,
+            borderRadius: 10,
+            backgroundColor: colors.transparent,
+            padding: 0,
+          }}
         >
           {_renderItem()}
         </AppButton>

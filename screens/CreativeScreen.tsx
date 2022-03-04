@@ -76,11 +76,17 @@ const CreativeScreen = ({}: Props) => {
         'https://images.unsplash.com/photo-1612981453053-184fd648b66b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1413&q=80',
         'https://images.unsplash.com/photo-1609154767012-331529e7d73b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=671&q=80',
         'https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=749&q=80',
+        'https://clipground.com/images/cursive-text-generator-clipart-3.png',
+        'http://clipart-library.com/data_images/482713.png',
+        'https://i1.wp.com/www.titanui.com/wp-content/uploads/2013/08/05/Checklist-Clipboard-Template-Vector-01.jpg',
       ].map((uri) => (
-        <AppCard onPress={() => addItem(uri, 'image')} style={{ padding: 0 }}>
+        <AppCard
+          onPress={() => addItem(uri, 'image')}
+          style={{ backgroundColor: colors.transparent, padding: 0 }}
+        >
           <Image
             source={{ uri }}
-            style={{ width: moderateScale(75), height: moderateScale(50) }}
+            style={{ width: moderateScale(75), height: moderateScale(60) }}
             resizeMode='cover'
           />
         </AppCard>
@@ -155,6 +161,7 @@ const CreativeScreen = ({}: Props) => {
         >
           <AppText type='title'>Création</AppText>
           <AppButton
+            onPress={() => navigation.navigate('Themes')}
             variant='secondary'
             style={{
               padding: 5,
@@ -215,7 +222,7 @@ const CreativeScreen = ({}: Props) => {
             renderItem={({ item }) => <View>{item}</View>}
             horizontal
             contentContainerStyle={{
-              minHeight: moderateScale(60),
+              minHeight: moderateScale(70),
               alignItems: 'center',
             }}
           />

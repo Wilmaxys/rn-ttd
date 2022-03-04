@@ -9,7 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigator from './TabNavigator';
 import { AppButton } from '../components/global';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { QuestionsScreen } from '../screens';
+import { QuestionsScreen, ThemeScreen } from '../screens';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Stack = createStackNavigator();
@@ -38,7 +38,7 @@ const AppNavigator = ({}) => {
             ),
             headerTitle: getFocusedRouteNameFromRoute(route),
             headerTitleStyle: {
-              fontFamily: 'open-sans',
+              fontFamily: 'montserrat',
               color: colors.text,
               fontSize: 24,
               fontWeight: 'bold',
@@ -59,6 +59,11 @@ const AppNavigator = ({}) => {
             name='QuestionsStart'
             component={QuestionsScreen}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name='Themes'
+            component={ThemeScreen}
+            options={{ headerTitle: 'Themes' }}
           />
         </Stack.Navigator>
       </NavigationContainer>
