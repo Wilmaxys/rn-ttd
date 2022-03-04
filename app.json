@@ -4,8 +4,8 @@
     "slug": "rn-ttd",
     "version": "0.1.2",
     "orientation": "default",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "icon": "./assets/images/ttd-icon.png",
+    "scheme": "timetodoux",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/ttd-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.timetodoux.ttd"

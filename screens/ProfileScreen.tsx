@@ -140,7 +140,7 @@ const ProfileScreen = ({}) => {
         }}
       >
         <AppCard
-          title='Objectifs'
+          title='Utilisation du temps'
           style={{
             marginHorizontal: 20,
             marginTop: 20,
@@ -152,7 +152,7 @@ const ProfileScreen = ({}) => {
           <PieChart />
         </AppCard>
         <AppCard
-          title='Favoris'
+          title='Atteinte des objectifs'
           style={{
             marginHorizontal: 20,
             marginTop: 20,
@@ -164,7 +164,7 @@ const ProfileScreen = ({}) => {
           <ProgressChart />
         </AppCard>
         <AppCard
-          title='Estimations'
+          title='Résultats des trackers'
           style={{
             marginHorizontal: 20,
             marginTop: 20,
