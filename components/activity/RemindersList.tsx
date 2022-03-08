@@ -1,8 +1,8 @@
-import { StyleSheet, ScrollView, ImageBackground } from 'react-native';
-import Notification from '../center/Notification';
-import { useSelector } from 'react-redux';
-import { themeSelector } from '../../store/slices/user-slice';
-import { AppText } from '../global';
+import { StyleSheet, ScrollView, ImageBackground } from "react-native";
+import Notification from "../center/Notification";
+import { useSelector } from "react-redux";
+import { themeSelector } from "../../store/slices/user-slice";
+import { AppText } from "../global";
 
 const CenterScreen = ({}) => {
   const { colors } = useSelector(themeSelector);
@@ -21,33 +21,33 @@ const CenterScreen = ({}) => {
       color: colors.text,
     },
     footer: {
-      position: 'absolute',
+      position: "absolute",
       bottom: 0,
       height: 150,
-      width: '100%',
+      width: "100%",
     },
     image: {
       flex: 1,
-      width: '100%',
+      width: "100%",
       backgroundColor: colors.secondaryLight,
     },
   });
 
   return (
     <ScrollView contentContainerStyle={styles.screen}>
-      <AppText type='subtitle' style={{ marginTop: 15 }}>
+      <AppText type="subtitle" style={{ marginTop: 15 }}>
         Aujourd'hui
       </AppText>
       <Notification />
       <Notification brown={true} />
       <Notification brown={true} />
-      <AppText type='subtitle' style={{ marginTop: 15 }}>
+      <AppText type="subtitle" style={{ marginTop: 15 }}>
         Demain
       </AppText>
       <Notification />
       <Notification brown={true} />
       <Notification />
-      <AppText type='subtitle' style={{ marginTop: 15 }}>
+      <AppText type="subtitle" style={{ marginTop: 15 }}>
         La semaine prochaine
       </AppText>
       <Notification />

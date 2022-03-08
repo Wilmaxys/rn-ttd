@@ -1,10 +1,10 @@
-import { StyleSheet, ScrollView, View } from 'react-native';
-import { useSelector } from 'react-redux';
-import { modulesSelector } from '../../store/slices/module-slice';
-import { TrackerModule } from '../../types';
-import moment from 'moment';
-import TrackerCard from '../activity/TrackerCard';
-import { AppText } from '../global';
+import { StyleSheet, ScrollView, View } from "react-native";
+import { useSelector } from "react-redux";
+import { modulesSelector } from "../../store/slices/module-slice";
+import { TrackerModule } from "../../types";
+import moment from "moment";
+import TrackerCard from "../activity/TrackerCard";
+import { AppText } from "../global";
 
 const ActivityScreen = ({}) => {
   const modules = useSelector(modulesSelector);
@@ -15,12 +15,12 @@ const ActivityScreen = ({}) => {
   const dates: { [key: string]: { tracker: TrackerModule; value?: number }[] } =
     {};
 
-  const currentDate = moment().format('YYYYMMDD');
+  const currentDate = moment().format("YYYYMMDD");
   trackers.forEach((tracker) => {
     let currentDateDone = false;
 
     tracker.days.forEach((day) => {
-      const date = moment(day.date).format('YYYYMMDD');
+      const date = moment(day.date).format("YYYYMMDD");
 
       if (date === currentDate) {
         currentDateDone = true;
@@ -60,14 +60,14 @@ const ActivityScreen = ({}) => {
           const date = moment(key);
           const displayDate = date.calendar(null, {
             sameDay: "[Aujourd'hui]",
-            lastDay: '[Hier]',
-            sameElse: date.format('DD MMM YYYY'),
+            lastDay: "[Hier]",
+            sameElse: date.format("DD MMM YYYY"),
           });
 
           return (
             <View key={`date${dateIndex}`}>
               <AppText
-                type='subtitle'
+                type="subtitle"
                 style={{ marginBottom: 5, marginTop: 15 }}
               >
                 {displayDate}

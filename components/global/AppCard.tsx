@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from "react";
 import {
   Image,
   ImageRequireSource,
@@ -7,12 +7,13 @@ import {
   View,
   ViewProps,
   ViewStyle,
-} from 'react-native';
-import { useSelector } from 'react-redux';
-import AppText from './AppText';
-import AppButton from './inputs/AppButton';
-import { themeSelector } from '../../store/slices/user-slice';
-import { LinearGradient } from 'expo-linear-gradient';
+  ImageBackground,
+} from "react-native";
+import { useSelector } from "react-redux";
+import AppText from "./AppText";
+import AppButton from "./inputs/AppButton";
+import { themeSelector } from "../../store/slices/user-slice";
+import { LinearGradient } from "expo-linear-gradient";
 
 type Props = ViewProps & {
   children?: ReactNode;
@@ -53,7 +54,7 @@ const AppCard = ({
         }}
       >
         {title !== undefined && (
-          <AppText type='title' style={titleStyle}>
+          <AppText type="title" style={titleStyle}>
             {title}
           </AppText>
         )}
@@ -69,7 +70,7 @@ const AppCard = ({
       style={{
         borderRadius: 15,
         backgroundColor: colors.card,
-        overflow: 'hidden',
+        overflow: "hidden",
         ...(style as ViewStyle),
         paddingBottom: 0,
         paddingLeft: 0,
@@ -78,30 +79,48 @@ const AppCard = ({
       }}
       {...props}
     >
-      {imageSource !== undefined && (
-        <View
-          style={{
-            borderBottomWidth: 1,
-            borderColor: colors.border,
-          }}
-        >
-          <Image
-            source={imageSource}
-            resizeMode='cover'
+      <ImageBackground
+        source={require("../../assets/images/frame.png")}
+        imageStyle={{
+          resizeMode: "repeat",
+          overflow: "hidden",
+          backfaceVisibility: "visible",
+          flex: 1,
+          opacity: 0.2,
+        }}
+        style={{
+          width: "100%",
+        }}
+      >
+        {imageSource !== undefined && (
+          <View
             style={{
-              width: '100%',
-              height: 100,
+              borderBottomWidth: 1,
+              borderColor: colors.border,
             }}
-          />
-        </View>
-      )}
-      {gradientColors !== undefined ? (
-        <LinearGradient colors={gradientColors} start={[0, 0.5]} end={[2, 0.5]}>
-          {_renderChildren()}
-        </LinearGradient>
-      ) : (
-        _renderChildren()
-      )}
+          >
+            <Image
+              source={imageSource}
+              resizeMode="cover"
+              style={{
+                width: "100%",
+                height: 100,
+              }}
+            />
+          </View>
+        )}
+        {gradientColors !== undefined ? (
+          <LinearGradient
+            colors={gradientColors}
+            start={[0, 0.5]}
+            end={[2, 0.5]}
+          >
+            {_renderChildren()}
+          </LinearGradient>
+        ) : (
+          _renderChildren()
+        )}
+      </ImageBackground>
     </AppButton>
   );
 };

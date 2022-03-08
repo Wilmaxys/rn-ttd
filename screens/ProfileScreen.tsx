@@ -1,11 +1,11 @@
-import { View, StyleSheet, Image, Text, ScrollView } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useSelector } from 'react-redux';
-import { themeSelector } from '../store/slices/user-slice';
-import { useNavigation } from '@react-navigation/native';
-import { AppButton, AppCard } from '../components/global';
-import { LineChart, PieChart, ProgressChart } from '../components/charts';
-import { moderateScale } from '../constants';
+import { View, StyleSheet, Image, Text, ScrollView } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
+import { themeSelector } from "../store/slices/user-slice";
+import { useNavigation } from "@react-navigation/native";
+import { AppButton, AppCard } from "../components/global";
+import { LineChart, PieChart, ProgressChart } from "../components/charts";
+import { moderateScale } from "../constants";
 
 const ProfileScreen = ({}) => {
   const { colors } = useSelector(themeSelector);
@@ -16,17 +16,17 @@ const ProfileScreen = ({}) => {
       flexGrow: 1,
     },
     top: {
-      width: '100%',
+      width: "100%",
       height: 170,
-      backgroundColor: colors.white,
+      backgroundColor: colors.card,
       marginBottom: 40,
     },
     image: {
-      width: '100%',
-      height: '100%',
+      width: "100%",
+      height: "100%",
     },
     imageContainer: {
-      position: 'absolute',
+      position: "absolute",
       top: 20,
       left: 15,
       borderRadius: 12,
@@ -34,7 +34,7 @@ const ProfileScreen = ({}) => {
       borderColor: colors.background,
       width: 150,
       height: 150,
-      overflow: 'hidden',
+      overflow: "hidden",
       marginVertical: 30,
     },
     contentContainer: {
@@ -43,12 +43,16 @@ const ProfileScreen = ({}) => {
       right: 10,
     },
     contentContainerTop: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      flexDirection: "row",
+      justifyContent: "space-between",
       marginBottom: 5,
     },
     name: {
       fontSize: 18,
+      color: colors.text,
+    },
+    colorTest: {
+      color: colors.text,
     },
   });
 
@@ -58,8 +62,8 @@ const ProfileScreen = ({}) => {
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
-            source={require('../assets/images/profil.png')}
-            resizeMode='cover'
+            source={require("../assets/images/profil.png")}
+            resizeMode="cover"
           />
         </View>
         <View style={styles.contentContainer}>
@@ -69,26 +73,32 @@ const ProfileScreen = ({}) => {
               <Text style={styles.name}>Simon</Text>
             </View>
             <AppButton
-              onPress={() => navigation.navigate('QuestionsStart')}
-              variant='secondary'
+              onPress={() => navigation.navigate("QuestionsStart")}
+              variant="secondary"
               style={{ margin: 0 }}
             >
-              <MaterialCommunityIcons name='cog' size={24} />
+              <MaterialCommunityIcons
+                style={styles.colorTest}
+                name="cog"
+                size={24}
+              />
             </AppButton>
           </View>
           <View>
-            <Text>Misogyne oui, mais antisémite non.</Text>
+            <Text style={styles.colorTest}>
+              Misogyne oui, mais antisémite non.
+            </Text>
           </View>
         </View>
       </View>
       <View
         style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
+          flexDirection: "row",
+          flexWrap: "wrap",
         }}
       >
         <AppCard
-          title='Utilisation du temps'
+          title="Utilisation du temps"
           style={{
             marginHorizontal: 20,
             marginTop: 20,
@@ -100,7 +110,7 @@ const ProfileScreen = ({}) => {
           <PieChart />
         </AppCard>
         <AppCard
-          title='Atteinte des objectifs'
+          title="Atteinte des objectifs"
           style={{
             marginHorizontal: 20,
             marginTop: 20,
@@ -112,7 +122,7 @@ const ProfileScreen = ({}) => {
           <ProgressChart />
         </AppCard>
         <AppCard
-          title='Résultats des trackers'
+          title="Résultats des trackers"
           style={{
             marginHorizontal: 20,
             marginTop: 20,

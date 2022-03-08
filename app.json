@@ -2,9 +2,9 @@
   "expo": {
     "name": "TimeToDoux",
     "slug": "rn-ttd",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "orientation": "default",
-    "icon": "./assets/images/ttd-icon.png",
+    "icon": "./assets/images/icon.png",
     "scheme": "timetodoux",
     "userInterfaceStyle": "automatic",
     "splash": {

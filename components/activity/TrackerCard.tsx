@@ -1,12 +1,12 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import moment, { Moment } from 'moment';
-import React from 'react';
-import { View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateModule } from '../../store/slices/module-slice';
-import { themeSelector } from '../../store/slices/user-slice';
-import { TrackerModule } from '../../types';
-import { AppButton, AppCard, AppText } from '../global';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import moment, { Moment } from "moment";
+import React from "react";
+import { View, ImageBackground } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { updateModule } from "../../store/slices/module-slice";
+import { themeSelector } from "../../store/slices/user-slice";
+import { TrackerModule } from "../../types";
+import { AppButton, AppCard, AppText } from "../global";
 
 type Props = {
   module: TrackerModule;
@@ -21,18 +21,18 @@ const TrackerCard = ({ module, date, value }: Props) => {
   const getValueColor = (v: number) => {
     switch (v) {
       case 1:
-        return '#cb4b4e';
+        return "#cb4b4e";
       case 2:
-        return '#f8c94f';
+        return "#f8c94f";
       case 3:
-        return '#f7f393';
+        return "#f7f393";
       case 4:
-        return '#a1e967';
+        return "#a1e967";
       case 5:
-        return '#6daa6c';
+        return "#6daa6c";
 
       default:
-        return '#000000';
+        return "#000000";
     }
   };
 
@@ -76,7 +76,7 @@ const TrackerCard = ({ module, date, value }: Props) => {
         marginHorizontal: 0,
         paddingHorizontal: 10,
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: "row",
       }}
     >
       <View
@@ -84,13 +84,13 @@ const TrackerCard = ({ module, date, value }: Props) => {
           marginRight: 8,
           borderRadius: 10,
           backgroundColor: colors.primary,
+          alignSelf: "center",
           padding: 10,
-          alignSelf: 'center',
         }}
       >
         <MaterialCommunityIcons
           color={colors.background}
-          name='emoticon-happy-outline'
+          name="emoticon-happy-outline"
           size={35}
         />
       </View>
@@ -98,14 +98,14 @@ const TrackerCard = ({ module, date, value }: Props) => {
         <View
           style={{
             flex: 1,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
+            flexDirection: "row",
+            justifyContent: "space-between",
           }}
         >
           <AppText>{module.title}</AppText>
-          {date !== undefined && <AppText>{date.format('HH:mm')}</AppText>}
+          {date !== undefined && <AppText>{date.format("HH:mm")}</AppText>}
         </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
           {[1, 2, 3, 4, 5].map((v) =>
             _renderValuePicker(v, value === v, value !== undefined)
           )}
