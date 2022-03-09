@@ -114,10 +114,10 @@ const QuestionsStartScreen = ({}: Props) => {
               <View
                 key={`pageNumber${index}`}
                 style={{
-                  borderColor: isSelected ? colors.primary : colors.white,
+                  borderColor: isSelected ? colors.primary : colors.card,
                   borderRadius: 50,
                   borderWidth: isPassed ? 0 : 4,
-                  backgroundColor: isPassed ? colors.primary : colors.white,
+                  backgroundColor: isPassed ? colors.primary : colors.card,
                   padding: isPassed ? 4 : 0,
                   width: 30,
                   height: 30,
@@ -141,7 +141,7 @@ const QuestionsStartScreen = ({}: Props) => {
       </View>
       <View
         style={{
-          backgroundColor: colors.white,
+          backgroundColor: colors.card,
           paddingHorizontal: 25,
           paddingVertical: 50,
           flex: 1,
