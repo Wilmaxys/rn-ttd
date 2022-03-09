@@ -1,5 +1,5 @@
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React, { useState } from 'react';
+import React from 'react';
 import { View, ViewStyle } from 'react-native';
 import { useSelector } from 'react-redux';
 import { themeSelector } from '../../../store/slices/user-slice';
@@ -13,21 +13,17 @@ type Props = AppButtonsProps & {
 
 const AppCheckBox = ({ checked, label = '', style = {}, ...props }: Props) => {
   const { colors } = useSelector(themeSelector);
-  const [check, setCheck] = useState(checked);
-
-  const onPress = props.onPress ?? (() => setCheck(!check));
 
   return (
     <AppButton
       style={{
         borderColor: colors.primary,
         borderRadius: 5,
-        backgroundColor: check ? colors.primary : colors.gray,
+        backgroundColor: checked ? colors.primary : colors.gray,
         padding: 2,
         margin: 0,
         ...(style as ViewStyle),
       }}
-      onPress={onPress}
       {...props}
     >
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>

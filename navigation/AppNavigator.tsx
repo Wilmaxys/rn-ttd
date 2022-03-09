@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 const AppNavigator = ({}) => {
   const theme = useSelector(themeSelector);
   const { colors } = theme;
-  ``;
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.background }}>
       <NavigationContainer theme={theme}>

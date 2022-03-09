@@ -1,15 +1,18 @@
-import { View, StyleSheet, Text, ImageBackground } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { useSelector } from "react-redux";
-import { themeSelector } from "../../store/slices/user-slice";
-import { AppCheckBox } from "../global";
+import { View, StyleSheet, Text, ImageBackground } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useSelector } from 'react-redux';
+import { themeSelector } from '../../store/slices/user-slice';
+import { AppCheckBox } from '../global';
+import { useState } from 'react';
 
 const Notification = ({ brown = false }) => {
   const { colors } = useSelector(themeSelector);
 
+  const [checked, setChecked] = useState(false);
+
   const styles = StyleSheet.create({
     card: {
-      width: "100%",
+      width: '100%',
       // shadowColor: "black",
       // shadowOffset: {
       //   width: 0,
@@ -21,7 +24,7 @@ const Notification = ({ brown = false }) => {
       paddingTop: 20,
       paddingBottom: 15,
       paddingHorizontal: 10,
-      flexDirection: "row",
+      flexDirection: 'row',
       height: 100,
     },
     cardVectorText: {
@@ -33,13 +36,13 @@ const Notification = ({ brown = false }) => {
     },
     cardContentTop: {
       flex: 1,
-      flexDirection: "row",
-      justifyContent: "space-between",
+      flexDirection: 'row',
+      justifyContent: 'space-between',
     },
     cardContentBottom: {
       flex: 2,
-      flexDirection: "row",
-      alignItems: "center",
+      flexDirection: 'row',
+      alignItems: 'center',
       paddingLeft: 5,
     },
     cardContentTopTitle: {
@@ -51,20 +54,20 @@ const Notification = ({ brown = false }) => {
       paddingVertical: 5,
       marginRight: 5,
       borderRadius: 3,
-      justifyContent: "center",
+      justifyContent: 'center',
     },
     tagText: {
       color: colors.text,
     },
     cardStatus: {
       borderWidth: 4,
-      borderColor: colors.white,
+      borderColor: colors.card,
       borderRadius: 6,
-      position: "absolute",
+      position: 'absolute',
       top: -20,
       right: 6,
-      justifyContent: "center",
-      alignItems: "center",
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     hourText: {
       color: colors.text,
@@ -73,30 +76,30 @@ const Notification = ({ brown = false }) => {
       marginTop: 30,
       borderRadius: 10,
       backgroundColor: colors.card,
-      width: "100%",
+      width: '100%',
     },
     image2: {
       width: 55,
       height: 55,
       backgroundColor: brown ? colors.secondary : colors.primary,
       borderRadius: 10,
-      justifyContent: "center",
-      alignItems: "center",
+      justifyContent: 'center',
+      alignItems: 'center',
       padding: 5,
     },
     cardVector: {
-      overflow: "hidden",
+      overflow: 'hidden',
       borderRadius: 6,
     },
   });
 
   return (
     <ImageBackground
-      source={require("../../assets/images/frame.png")}
+      source={require('../../assets/images/frame.png')}
       imageStyle={{
-        resizeMode: "repeat",
-        overflow: "hidden",
-        backfaceVisibility: "visible",
+        resizeMode: 'repeat',
+        overflow: 'hidden',
+        backfaceVisibility: 'visible',
         flex: 1,
         opacity: 0.2,
       }}
@@ -104,15 +107,15 @@ const Notification = ({ brown = false }) => {
     >
       <View style={styles.card}>
         <View style={styles.cardStatus}>
-          <AppCheckBox checked={false} />
+          <AppCheckBox checked={checked} onPress={() => setChecked(!checked)} />
         </View>
         <View style={styles.cardVector}>
           <ImageBackground
-            source={require("../../assets/images/frame.png")}
+            source={require('../../assets/images/frame.png')}
             imageStyle={{
-              resizeMode: "repeat",
-              overflow: "visible",
-              backfaceVisibility: "visible",
+              resizeMode: 'repeat',
+              overflow: 'visible',
+              backfaceVisibility: 'visible',
               flex: 1,
               opacity: 1,
             }}
@@ -120,7 +123,7 @@ const Notification = ({ brown = false }) => {
           >
             <Text style={styles.cardVectorText}>
               <Ionicons
-                name="alarm-outline"
+                name='alarm-outline'
                 color={colors.background}
                 size={36}
               />
