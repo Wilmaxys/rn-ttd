@@ -2,7 +2,7 @@
   "expo": {
     "name": "TimeToDoux",
     "slug": "rn-ttd",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
     "scheme": "timetodoux",
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/ttd-icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.timetodoux.ttd"

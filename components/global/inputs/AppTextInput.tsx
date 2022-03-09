@@ -101,6 +101,7 @@ const AppTextInput = ({
             flex: 1,
           }}
           value={value}
+          placeholderTextColor={colors.text + 99}
           {...props}
         />
         {renderAfter?.()}

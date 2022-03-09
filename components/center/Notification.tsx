@@ -5,7 +5,13 @@ import { themeSelector } from '../../store/slices/user-slice';
 import { AppCheckBox } from '../global';
 import { useState } from 'react';
 
-const Notification = ({ brown = false }) => {
+const Notification = ({
+  brown = false,
+  title = '',
+  time = '',
+  important = false,
+  urgent = false,
+}) => {
   const { colors } = useSelector(themeSelector);
 
   const [checked, setChecked] = useState(false);
@@ -132,18 +138,20 @@ const Notification = ({ brown = false }) => {
         </View>
         <View style={styles.cardContent}>
           <View style={styles.cardContentTop}>
-            <Text style={styles.cardContentTopTitle}>TDD Wireframe</Text>
-            <Text style={styles.hourText}>13:42</Text>
+            <Text style={styles.cardContentTopTitle}>{title}</Text>
+            <Text style={styles.hourText}>{time}</Text>
           </View>
           <View style={styles.cardContentBottom}>
             <View style={{ ...styles.tag, backgroundColor: colors.background }}>
               <Text style={{ ...styles.tagText, color: colors.text }}>
-                test
+                {important ? 'important' : 'facultatif'}
               </Text>
             </View>
-            <View style={styles.tag}>
-              <Text style={styles.tagText}>test</Text>
-            </View>
+            {urgent && (
+              <View style={styles.tag}>
+                <Text style={styles.tagText}>urgent</Text>
+              </View>
+            )}
           </View>
         </View>
       </View>

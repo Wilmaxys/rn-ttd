@@ -57,7 +57,7 @@ const AppModal = ({
           position: 'relative',
           borderTopLeftRadius: 25,
           borderTopRightRadius: 25,
-          backgroundColor: colors.white,
+          backgroundColor: colors.card,
           paddingVertical: 15,
           width: '100%',
           maxHeight: '100%',
